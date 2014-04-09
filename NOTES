@@ -14,3 +14,8 @@ NOTES
    by usage of older glib version. Let me know if i miss anything.
 
 5. This scripts are tested on VM environment only!!
+
+6. Pulseaudio script will add UID/GID 216 to your system automatically
+   if it doesn't exist yet. This is the UID/GID assigned according
+   to SBo. I added this on the script to make the build script can
+   run without any intervention at all during building.
