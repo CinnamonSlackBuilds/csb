@@ -17,22 +17,24 @@ How to build and install the CINNAMON packages using these scripts:
 
 1.  Clone the Git repo or download a tarball/zip of the repo.
 
-2.  Install bash-completion from /extra before building the packages.
+2.  You may want to read NOTES before building
 
-3.  Reinstall startup-notifications and NetworkManager to avoid broken build on
+3.  Install bash-completion from /extra before building the packages.
+
+4.  Reinstall startup-notifications and NetworkManager to avoid broken build on
     cinnamon-control-center and muffin. I know it's strange things to do, but
     this problem did happen on a clean installation of Slackware64-14.1 and
     reinstalling it before building solved the problems for me.
 
-4.  Run the 'build-cinnamon.sh' in the root directory which will build
+5.  Run the 'build-cinnamon.sh' in the root directory which will build
     and install all the cinnamon packages including the necessary dependencies.
     Just in case the automated build script failed, refer to KNOWN_ISSUES.
     If you want to build it manually, please refer to BUILD_ORDER
 
-5.  Once the packages are built and installed, you can use 'xwmconfig' 
+6.  Once the packages are built and installed, you can use 'xwmconfig' 
     to select the cinnamon session. Run startx to start Cinnamon Desktop.
 
-6.  Enjoy and let me know of any issues or suggestions/improvements. 
+7.  Enjoy and let me know of any issues or suggestions/improvements. 
     Email is: willysr@slackware-id.org
 
 
