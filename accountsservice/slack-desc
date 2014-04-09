@@ -1,0 +1,12 @@
+               |-----handy-ruler------------------------------------------------------|
+accountsservice: accountsservice (D-Bus Service)
+accountsservice:
+accountsservice: AccountsService is a D-Bus service for accessing the list of user
+accountsservice: accounts and information attached to those accounts. 
+accountsservice:
+accountsservice: Project URL:
+accountsservice: http://www.freedesktop.org/wiki/Software/AccountsService/
+accountsservice:
+accountsservice:
+accountsservice:
+accountsservice:

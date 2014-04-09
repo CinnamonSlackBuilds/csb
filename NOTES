@@ -1,0 +1,16 @@
+NOTES
+=====================
+
+1. I'm using the latest Slackware release as base (currently 14.1).
+
+2. PAM is needed to build several core packages of cinnamon. I have
+   tried to avoid this, but it seems to be inevitable.
+
+3. I tried to avoid systemd on this repository, thus some packages
+   are still using older version. So far, it works.
+
+4. I avoid changing/upgrading Slackware's glib packages which is
+   required by some packages. There *might* be some issues caused
+   by usage of older glib version. Let me know if i miss anything.
+
+5. This scripts are tested on VM environment only!!

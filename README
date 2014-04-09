@@ -1,0 +1,42 @@
+CINNAMON SlackBuilds
+=====================
+
+This repository provides SlackBuild scripts to build and install the CINNAMON
+desktop environment (http://cinnamon.linuxmint.com) on top of Slackware Linux.
+The Cinnamon packages are built with a minimum set of dependencies, but still
+provides a working desktop.
+
+I do not plan to provide binary packages at this moment. The reason is that
+because i only tested this on VM (virtual machine) environment only, not yet
+on a real machine. Once it's confirmed that it works out-of-the-box in real
+machine, then i can consider providing binary packages for Cinnamon.
+As always, building from the source is the recommended way to make sure it
+is linked with the libraries available on your machine.
+
+How to build and install the CINNAMON packages using these scripts:
+
+1.  Clone the Git repo or download a tarball/zip of the repo.
+
+2.  Install bash-completion from /extra before building the packages.
+
+3.  Reinstall startup-notifications and NetworkManager to avoid broken build on
+    cinnamon-control-center and muffin. I know it's strange things to do, but
+    this problem did happen on a clean installation of Slackware64-14.1 and
+    reinstalling it before building solved the problems for me.
+
+4.  Run the 'build-cinnamon.sh' in the root directory which will build
+    and install all the cinnamon packages including the necessary dependencies.
+    Just in case the automated build script failed, refer to KNOWN_ISSUES.
+    If you want to build it manually, please refer to BUILD_ORDER
+
+5.  Once the packages are built and installed, you can use 'xwmconfig' 
+    to select the cinnamon session. Run startx to start Cinnamon Desktop.
+
+6.  Enjoy and let me know of any issues or suggestions/improvements. 
+    Email is: willysr@slackware-id.org
+
+
+Thanks!
+
+---
+Willy Sudiarto Raharjo

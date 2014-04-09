@@ -1,0 +1,7 @@
+KNOWN ISSUES
+=====================
+- In case of cinnamon-control-center failed on NMDevice, reinstall
+  Network-Manager and rebuild
+- In case of muffin failed on SnMonitorContext, reinstall startup-notification
+  and rebuild
+- Clicking account detail and system settings in account icon does nothing

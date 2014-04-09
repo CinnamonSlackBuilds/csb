@@ -1,0 +1,12 @@
+           |-----handy-ruler------------------------------------------------------|
+gnome-menus: gnome-menus (menu library and files for the GNOME desktop)
+gnome-menus:
+gnome-menus: gnome-menus contains the libgnome-menu library, the layout
+gnome-menus: configuration files for the GNOME menu, as well as a simple menu
+gnome-menus: editor.
+gnome-menus:
+gnome-menus:
+gnome-menus:
+gnome-menus:
+gnome-menus: Homepage: http://www.gnome.org
+gnome-menus:
