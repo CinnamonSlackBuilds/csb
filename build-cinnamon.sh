@@ -50,6 +50,7 @@ for dir in \
   pulseaudio \
   libgusb \
   colord \
+  libgtop \
   libgksu \
   gksu \
   cinnamon-settings-daemon \
