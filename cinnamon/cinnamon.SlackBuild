@@ -24,7 +24,7 @@
 
 PRGNAM=cinnamon
 VERSION=${VERSION:-2.0.14}
-BUILD=${BUILD:-2}
+BUILD=${BUILD:-3}
 TAG=${TAG:-_csb}
 
 if [ -z "$ARCH" ]; then
@@ -93,11 +93,6 @@ find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | gr
 
 find $PKG/usr/man -type f -exec gzip -9 {} \;
 for i in $( find $PKG/usr/man -type l ) ; do ln -s $( readlink $i ).gz $i.gz ; rm $i ; done
-
-if [ "$ARCH" = "x86_64" ]; then
-  mv $PKG/usr/lib/cinnamon-* $PKG/usr/lib${LIBDIRSUFFIX}/
-  rm -rf $PKG/usr/lib
-fi
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
 cp -a ABOUT-NLS COPYING NEWS README $PKG/usr/doc/$PRGNAM-$VERSION
