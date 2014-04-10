@@ -21,10 +21,14 @@ How to build and install the CINNAMON packages using these scripts:
 
 3.  Install bash-completion from /extra before building the packages.
 
-4.  Reinstall startup-notifications and NetworkManager to avoid broken build on
-    cinnamon-control-center and muffin. I know it's strange things to do, but
-    this problem did happen on a clean installation of Slackware64-14.1 and
-    reinstalling it before building solved the problems for me.
+4.  Run libtest.sh script in test-script directory as root to make sure your
+    libraries are not corrupted. These errors are safe and can be ignored:
+    lddlibc4: cannot read header from `/usr/bin/htmlview': No such file or directory
+    lddlibc4: cannot read header from `/usr/bin/krdb': No such file or directory
+    lddlibc4: cannot read header from `/usr/bin/pnmnoraw': No such file or directory
+    lddlibc4: cannot read header from `/usr/bin/pnmtoplainpnm': No such file or directory
+    If you get a result of Invalid ELF header, that means one of your libraries
+    are corrupted and must be fixed first before building this packages.
 
 5.  Run the 'build-cinnamon.sh' in the root directory which will build
     and install all the cinnamon packages including the necessary dependencies.
