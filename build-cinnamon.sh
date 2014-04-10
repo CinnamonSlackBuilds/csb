@@ -50,6 +50,8 @@ for dir in \
   pulseaudio \
   libgusb \
   colord \
+  libgksu \
+  gksu \
   cinnamon-settings-daemon \
   gnome-menus \
   krb5 \
