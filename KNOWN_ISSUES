@@ -4,5 +4,4 @@ KNOWN ISSUES
   Network-Manager and rebuild
 - In case of muffin failed on SnMonitorContext, reinstall startup-notification
   and rebuild
-- Clicking account detail and system settings in account icon does nothing
 - If KDE apps do not work on Cinnamon, try reinstalling qt
