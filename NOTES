@@ -19,3 +19,6 @@ NOTES
    if it doesn't exist yet. This is the UID/GID assigned according
    to SBo. I added this on the script to make the build script can
    run without any intervention at all during building.
+
+7. Some code in cinnamon packages are hardcoded to /usr/lib, so even
+   in x86_64, they will be installed in /usr/lib to avoid breakage.
