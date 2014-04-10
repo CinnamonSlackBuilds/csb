@@ -37,8 +37,6 @@ fi
 
 wget -c http://people.debian.org/~kov/gksu/$PRGNAM-$VERSION.tar.gz
 
-NUMJOBS=${NUMJOBS:-" -j8 "}
-
 CWD=$(pwd)
 TMP=${TMP:-/tmp/csb}
 PKG=$TMP/package-$PRGNAM
@@ -100,7 +98,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --disable-static \
   --build=$ARCH-slackware-linux
 
-make $NUMJOBS || make
+make
 make install DESTDIR=$PKG
 
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
