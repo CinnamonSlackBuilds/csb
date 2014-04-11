@@ -30,10 +30,12 @@ How to build and install the CINNAMON packages using these scripts:
     If you get a result of Invalid ELF header, that means one of your libraries
     are corrupted and must be fixed first before building this packages.
 
-5.  Run the 'build-cinnamon.sh' in the root directory which will build
-    and install all the cinnamon packages including the necessary dependencies.
-    Just in case the automated build script failed, refer to KNOWN_ISSUES.
-    If you want to build it manually, please refer to BUILD_ORDER
+5.  Build the packages according to the BUILD_ORDER manually.
+    If you wish to run an automated build script, please use the 'build-cinnamon.sh'
+    in the root directory which will build and install all the cinnamon packages
+    including the necessary dependencies.
+    NOTE: In certain cases, the automated build script *may* failed.
+    Some known issues are documented in KNOWN_ISSUES.
 
 6.  Once the packages are built and installed, you can use 'xwmconfig' 
     to select the cinnamon session. Run startx to start Cinnamon Desktop.
