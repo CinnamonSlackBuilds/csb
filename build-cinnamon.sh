@@ -107,7 +107,7 @@ for dir in \
   # The real build starts here
   sh ${package}.SlackBuild || exit 1
   if [ "$INST" = "1" ]; then
-    PACKAGE="${package}-$version-${build}*.txz"
+    PACKAGE="${package}-$version-*-${build}*.txz"
     if [ -f $TMP/$PACKAGE ]; then
       upgradepkg --install-new --reinstall $TMP/$PACKAGE
     else
