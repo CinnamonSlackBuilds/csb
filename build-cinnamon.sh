@@ -79,6 +79,7 @@ for dir in \
   pam_unix2 \
   python-pam \
   accountsservice \
+  alacarte \
   cinnamon \
   nemo \
   cinnamon-screensaver \

@@ -1,0 +1,12 @@
+        |-----handy-ruler------------------------------------------------------|
+alacarte: alacarte (menu editor)
+alacarte:
+alacarte: Alacarte is a simple menu editor for GNOME that uses the pyxdg.
+alacarte: It can create and edit menus and entries.
+alacarte: It follows the freedesktop.org menu specification and so should work
+alacarte: with any WM/DE that supports the spec.
+alacarte:
+alacarte: Project URL: https://launchpad.net/alacarte
+alacarte:
+alacarte:
+alacarte:
