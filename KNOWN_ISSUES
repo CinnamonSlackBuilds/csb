@@ -5,3 +5,7 @@ KNOWN ISSUES
 - In case of muffin failed on SnMonitorContext, reinstall startup-notification
   and rebuild
 - If KDE apps do not work on Cinnamon, try reinstalling qt
+- Launching terminal from nemo shortcut did not work since they are not yet defined.
+  Use this command to set it to other terminal (eg. xfce4-terminal)
+  Thanks to Michael Amadio
+  gsettings set org.cinnamon.desktop.default-applications.terminal exec xfce4-terminal
