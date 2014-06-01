@@ -6,12 +6,12 @@ desktop environment (http://cinnamon.linuxmint.com) on top of Slackware Linux.
 The Cinnamon packages are built with a minimum set of dependencies, but still
 provides a working desktop.
 
-I do not plan to provide binary packages at this moment. The reason is that
-because i only tested this on VM (virtual machine) environment only, not yet
-on a real machine. Once it's confirmed that it works out-of-the-box in real
-machine, then i can consider providing binary packages for Cinnamon.
-As always, building from the source is the recommended way to make sure it
-is linked with the libraries available on your machine.
+Binary packages of Cinnamon for Slackware 14.1 for both ARCH (x86 and x86_64)
+can be obtained from : http://www.slackware.org.uk/csb/. Binaries are built
+against Slackware 14.1.
+
+If you have custom installation, building from the source is the recommended
+way to make sure it is linked with the libraries available on your machine.
 
 How to build and install the CINNAMON packages using these scripts:
 
