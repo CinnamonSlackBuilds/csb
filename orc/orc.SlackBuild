@@ -6,7 +6,7 @@
 
 # Modified by Willy Sudiarto Raharjo for CSB Project
 PRGNAM=orc
-VERSION=${VERSION:-0.4.19}
+VERSION=${VERSION:-0.4.22}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
@@ -18,7 +18,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c http://gstreamer.freedesktop.org/src/orc/$PRGNAM-$VERSION.tar.gz
+wget -c http://gstreamer.freedesktop.org/src/orc/$PRGNAM-$VERSION.tar.xz
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/csb}
@@ -45,14 +45,14 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tar.gz
+tar xvf $CWD/$PRGNAM-$VERSION.tar.xz
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
  \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
   -o -perm 511 \) -exec chmod 755 {} \; -o \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
- -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
 CFLAGS="$SLKCFLAGS" \
 CXXFLAGS="$SLKCFLAGS" \
