@@ -33,7 +33,7 @@
 # Modified by Willy Sudiarto Raharjo for CSB Project
 
 PRGNAM=krb5
-VERSION=${VERSION:-1.12.1}
+VERSION=${VERSION:-1.12.2}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
@@ -77,8 +77,6 @@ tar xvf $CWD/$PRGNAM-$VERSION-signed.tar -C $TMP
 tar xvf $TMP/$PRGNAM-$VERSION.tar.gz
 cd $PRGNAM-$VERSION/src
 
-patch -p1 < $CWD/krb5_tcl.patch
-
 CFLAGS="$SLKCFLAGS" \
 CXXFLAGS="$SLKCFLAGS" \
 ./configure \
@@ -98,7 +96,7 @@ cat $CWD/config/kerberos.sh > $PKG/etc/profile.d/kerberos.sh
 cat $CWD/config/kerberos.csh > $PKG/etc/profile.d/kerberos.csh
 chmod 0755 $PKG/etc/profile.d/*
 
-find $PKG | xargs file | grep -e "executable" -e "shared object" | grep ELF \
+find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
 
 find $PKG/usr/kerberos/man -type f -exec gzip -9 {} \;
