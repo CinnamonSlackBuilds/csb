@@ -25,7 +25,7 @@
 # Modified by Willy Sudiarto Raharjo for CSB Project
 
 PRGNAM=gstreamer1
-VERSION=${VERSION:-1.4.2}
+VERSION=${VERSION:-1.4.3}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
