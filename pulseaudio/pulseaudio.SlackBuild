@@ -68,17 +68,15 @@ fi
 
 CFLAGS="$SLKCFLAGS" \
 CXXFLAGS="$SLKCFLAGS" \
-./configure \
+./bootstrap.sh \
   --prefix=/usr \
   --libdir=/usr/lib${LIBDIRSUFFIX} \
   --sysconfdir=/etc \
   --localstatedir=/var \
   --mandir=/usr/man \
-  --disable-tcpwrap \
   --enable-orc=${ORC} \
+  --enable-hal-compat \
   --disable-static \
-  --disable-solaris \
-  --disable-waveout \
   --with-system-user=pulse \
   --with-system-group=pulse \
   --with-access-group=audio \
@@ -96,6 +94,9 @@ cp $CWD/rc.pulseaudio $PKG/etc/rc.d/rc.pulseaudio.new
 
 find $PKG/usr/man -type f -exec gzip -9 {} \;
 for i in $( find $PKG/usr/man -type l ) ; do ln -s $( readlink $i ).gz $i.gz ; rm $i ; done
+
+mkdir -p $PKG/var/lib/pulse/.config/pulse
+chown -R pulse:pulse $PKG/var/lib/pulse
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
 cp -a *GPL LICENSE README $PKG/usr/doc/$PRGNAM-$VERSION
