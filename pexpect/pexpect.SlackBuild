@@ -25,7 +25,7 @@
 # Modified by Willy Sudiarto Raharjo for CSB Project
 
 PRGNAM=pexpect
-VERSION=${VERSION:-2.3}
+VERSION=${VERSION:-3.2}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
@@ -37,7 +37,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c http://downloads.sourceforge.net/pexpect/$PRGNAM-$VERSION.tar.gz
+wget -c https://github.com/pexpect/pexpect/archive/$VERSION.tar.gz
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/csb}
@@ -64,7 +64,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xzvf $CWD/$PRGNAM-$VERSION.tar.gz
+tar xvf $CWD/$PRGNAM-$VERSION.tar.gz || tar xvf $CWD/$VERSION.tar.gz
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
@@ -76,7 +76,7 @@ find -L . \
 python setup.py install --root=$PKG
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
-cp -a -r INSTALL LICENSE README $PKG/usr/doc/$PRGNAM-$VERSION
+cp -a -r DEVELOPERS INSTALL LICENSE README.rst $PKG/usr/doc/$PRGNAM-$VERSION
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 
 mkdir -p $PKG/install
