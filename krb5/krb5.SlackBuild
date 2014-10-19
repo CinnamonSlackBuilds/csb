@@ -33,7 +33,7 @@
 # Modified by Willy Sudiarto Raharjo for CSB Project
 
 PRGNAM=krb5
-VERSION=${VERSION:-1.12.2}
+VERSION=${VERSION:-1.13}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
@@ -45,7 +45,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c http://web.mit.edu/kerberos/dist/krb5/1.12/$PRGNAM-$VERSION-signed.tar
+wget -c http://web.mit.edu/kerberos/dist/krb5/1.13/$PRGNAM-$VERSION-signed.tar
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/csb}
