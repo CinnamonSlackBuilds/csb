@@ -2,7 +2,7 @@
 
 # Slackware build script for colord
 
-# Copyright 2014 Willy Sudiarto Raharjo <willysr@slackware-id.org>
+# Copyright 2014-2015 Willy Sudiarto Raharjo <willysr@slackware-id.org>
 # All rights reserved.
 #
 # Redistribution and use of this script, with or without modification, is
@@ -23,7 +23,7 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=colord
-VERSION=${VERSION:-1.1.8}
+VERSION=${VERSION:-1.2.1}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
@@ -56,6 +56,17 @@ else
   LIBDIRSUFFIX=""
 fi
 
+if ! grep -q ^colord: /etc/group ; then
+  groupadd -g 297 colord
+  useradd -d /var/lib/colord -u 297 -g colord -s /bin/false colord
+fi
+
+if [ "${BASH_COMPLETION:-no}" = "yes" ]; then
+  USE_BASH="--enable-bash-completion"
+else
+  USE_BASH="--disable-bash-completion"
+fi
+
 set -e
 
 rm -rf $PKG
@@ -84,7 +95,9 @@ CXXFLAGS="$SLKCFLAGS" \
   --disable-gusb \
   --disable-udev \
   --disable-systemd-login \
-  --build=$ARCH-slackware-linux
+  --with-daemon-user=colord \
+  --build=$ARCH-slackware-linux \
+  $USE_BASH
 
 make
 make install DESTDIR=$PKG
@@ -103,6 +116,9 @@ cp -a AUTHORS COPYING* MAINTAINERS $PKG/usr/doc/$PRGNAM-$VERSION
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 find $PKG/usr/doc/$PRGNAM-$VERSION/ -type f -exec chmod 644 {} \;
 chown -R root:root $PKG/usr/doc/$PRGNAM-$VERSION
+
+mkdir -p $PKG/var/lib/$PRGNAM
+chown -R $PRGNAM:$PRGNAM $PKG/var/lib/$PRGNAM
 
 mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
