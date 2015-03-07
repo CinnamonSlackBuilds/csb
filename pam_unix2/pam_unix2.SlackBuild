@@ -35,7 +35,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c ftp://ftp.archlinux.org/other/pam_unix2/pam_unix2-2.9.1.tar.bz2
+wget -c https://sources.archlinux.org/other/pam_unix2/pam_unix2-2.9.1.tar.bz2
 
 if [ "$ARCH" = "i486" ]; then
   SLKCFLAGS="-O2 -march=i486 -mtune=i686"
