@@ -57,6 +57,7 @@ for dir in \
   cinnamon-settings-daemon \
   gnome-menus \
   krb5 \
+  cinnamon-menus \
   cinnamon-control-center \
   zenity \
   cogl \
