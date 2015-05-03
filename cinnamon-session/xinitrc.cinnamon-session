@@ -12,6 +12,8 @@ sysmodmap=/etc/X11/xinit/.Xmodmap
 [ -f $userresources ] && xrdb -merge $userresources
 [ -f $usermodmap ] && xmodmap $usermodmap
 
+export CLUTTER_BACKEND=x11
+export CLUTTER_DISABLE_XINPUT=1
 if [ -z "$DESKTOP_SESSION" -a -x /usr/bin/ck-launch-session ]; then
   exec ck-launch-session dbus-launch --exit-with-session cinnamon-session
 else
