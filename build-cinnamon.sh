@@ -78,6 +78,7 @@ for dir in \
   accountsservice \
   alacarte \
   cinnamon \
+  polib \
   nemo \
   cinnamon-screensaver \
   ; do
