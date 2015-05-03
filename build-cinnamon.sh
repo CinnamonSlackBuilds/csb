@@ -70,7 +70,6 @@ for dir in \
   caribou \
   pexpect \
   BeautifulSoup \
-  pysetuptools \
   lxml \
   metacity \
   orc \

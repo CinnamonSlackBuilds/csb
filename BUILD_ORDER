@@ -30,7 +30,6 @@ libgee
 caribou
 pexpect
 BeautifulSoup
-pysetuptools
 lxml
 metacity
 orc
