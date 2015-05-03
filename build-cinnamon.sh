@@ -72,7 +72,6 @@ for dir in \
   BeautifulSoup \
   lxml \
   metacity \
-  gstreamer1 \
   gst1-plugins-base \
   gst1-plugins-good \
   pam \
