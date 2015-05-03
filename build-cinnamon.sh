@@ -39,6 +39,7 @@ CSBROOT=$(pwd)
 # Loop for all packages
 for dir in \
   gnome-common \
+  mozjs \
   cjs \
   cinnamon-desktop \
   json-glib \
