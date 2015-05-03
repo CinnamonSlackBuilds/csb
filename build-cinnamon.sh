@@ -72,7 +72,6 @@ for dir in \
   BeautifulSoup \
   lxml \
   metacity \
-  orc \
   gstreamer1 \
   gst1-plugins-base \
   gst1-plugins-good \
