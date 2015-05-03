@@ -72,7 +72,6 @@ for dir in \
   BeautifulSoup \
   lxml \
   metacity \
-  gst1-plugins-base \
   gst1-plugins-good \
   pam \
   pam_unix2 \
