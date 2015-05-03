@@ -23,7 +23,7 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=colord
-VERSION=${VERSION:-1.2.1}
+VERSION=${VERSION:-1.2.10}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
@@ -92,9 +92,9 @@ CXXFLAGS="$SLKCFLAGS" \
   --mandir=/usr/man \
   --docdir=/usr/doc/$PRGNAM-$VERSION \
   --disable-static \
-  --disable-gusb \
   --disable-udev \
   --disable-systemd-login \
+  --disable-argyllcms-sensor \
   --with-daemon-user=colord \
   --build=$ARCH-slackware-linux \
   $USE_BASH
