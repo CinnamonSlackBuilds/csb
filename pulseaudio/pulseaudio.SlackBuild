@@ -7,7 +7,7 @@
 # Modified by Willy Sudiarto Raharjo for CSB Project
 
 PRGNAM=pulseaudio
-VERSION=${VERSION:-5.0}
+VERSION=${VERSION:-6.0}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
@@ -65,6 +65,8 @@ if pkg-config --exists orc-0.4 ; then
 else
   ORC=no
 fi
+
+sed -i -e '/@PA_BINARY@/ imkdir -p \$HOME/.config/pulse' src/daemon/start-pulseaudio-x11.in
 
 CFLAGS="$SLKCFLAGS" \
 CXXFLAGS="$SLKCFLAGS" \
