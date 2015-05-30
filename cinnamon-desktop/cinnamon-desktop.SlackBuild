@@ -23,7 +23,7 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=cinnamon-desktop
-VERSION=${VERSION:-2.4.2}
+VERSION=${VERSION:-2.6.3}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
@@ -82,6 +82,9 @@ CXXFLAGS="$SLKCFLAGS" \
   --docdir=/usr/doc/$PRGNAM-$VERSION \
   --enable-introspection=yes \
   --build=$ARCH-slackware-linux
+
+sed -i "s|include \$(libgsystem_srcpath)\/\$(DEPDIR)/libgsystem_la-gsystem-file-utils.Plo||" libcinnamon-desktop/Makefile
+sed -i "s|include \$(libgsystem_srcpath)\/\$(DEPDIR)/libgsystem_la-gsystem-local-alloc.Plo||" libcinnamon-desktop/Makefile
 
 make
 make install DESTDIR=$PKG
