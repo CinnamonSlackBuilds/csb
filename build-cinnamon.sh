@@ -81,6 +81,7 @@ for dir in \
   polib \
   nemo \
   cinnamon-screensaver \
+  cinnamon-themes \
   ; do
   # Get the package name
   package=$(echo $dir | cut -f2- -d /)
