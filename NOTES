@@ -22,3 +22,7 @@ NOTES
 
 7. Some code in cinnamon packages are hardcoded to /usr/lib, so even
    in x86_64, they will be installed in /usr/lib to avoid breakage.
+
+8. I removed webkit-related screensaver in cinnamon-screensaver to avoid
+   building webkitgtk which is very time consuming. It still has the
+   default screensaver that is able to lock your desktop (only requires PAM).
