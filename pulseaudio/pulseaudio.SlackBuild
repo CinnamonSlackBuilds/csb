@@ -8,7 +8,7 @@
 
 PRGNAM=pulseaudio
 VERSION=${VERSION:-7.0}
-BUILD=${BUILD:-1}
+BUILD=${BUILD:-2}
 TAG=${TAG:-_csb}
 
 if [ -z "$ARCH" ]; then
@@ -66,7 +66,15 @@ else
   ORC=no
 fi
 
+if pkg-config --exists bash-completion ; then
+  BASHCOMPLETIONDIR=$(pkg-config --variable=completionsdir bash-completion)
+else
+  echo "Setting completions directory manually."
+  BASHCOMPLETIONDIR=/usr/share/bash-completion/completions
+fi
+
 sed -i -e '/@PA_BINARY@/ imkdir -p \$HOME/.config/pulse' src/daemon/start-pulseaudio-x11.in
+echo "X-MATE-Autostart-Phase=Initialization" >>src/daemon/pulseaudio.desktop.in
 
 CFLAGS="$SLKCFLAGS" \
 CXXFLAGS="$SLKCFLAGS" \
@@ -80,9 +88,11 @@ CXXFLAGS="$SLKCFLAGS" \
   --enable-hal-compat \
   --disable-static \
   --disable-default-build-tests \
+  --disable-tcpwrap \
   --with-system-user=pulse \
   --with-system-group=pulse \
   --with-access-group=audio \
+  --with-bash-completion-dir=$BASHCOMPLETIONDIR \
   --build=$ARCH-slackware-linux
 
 make -j1
