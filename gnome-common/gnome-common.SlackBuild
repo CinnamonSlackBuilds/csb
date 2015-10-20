@@ -25,7 +25,7 @@
 # Modified by Willy Sudiarto Raharjo for CSB Project
 
 PRGNAM=gnome-common
-VERSION=${VERSION:-3.14.0}
+VERSION=${VERSION:-3.18.0}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
@@ -38,7 +38,7 @@ ARCH=noarch
 
 set -e
 
-wget -c http://ftp.gnome.org/pub/gnome/sources/gnome-common/3.14/$PRGNAM-$VERSION.tar.xz
+wget -c http://ftp.gnome.org/pub/gnome/sources/gnome-common/3.18/$PRGNAM-$VERSION.tar.xz
 
 rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
