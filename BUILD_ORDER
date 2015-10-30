@@ -25,7 +25,6 @@ cogl
 clutter
 clutter-gtk
 muffin
-pygobject3
 vala
 libgee
 caribou

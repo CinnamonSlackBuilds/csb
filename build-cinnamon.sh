@@ -65,7 +65,6 @@ for dir in \
   clutter \
   clutter-gtk \
   muffin \
-  pygobject3 \
   vala \
   libgee \
   caribou \
