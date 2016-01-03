@@ -7,8 +7,8 @@
 # Modified by Willy Sudiarto Raharjo for CSB Project
 
 PRGNAM=pulseaudio
-VERSION=${VERSION:-7.0}
-BUILD=${BUILD:-2}
+VERSION=${VERSION:-7.1}
+BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
 if [ -z "$ARCH" ]; then
@@ -60,18 +60,8 @@ find -L . \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
-if pkg-config --exists orc-0.4 ; then
-  ORC=yes
-else
-  ORC=no
-fi
-
-if pkg-config --exists bash-completion ; then
-  BASHCOMPLETIONDIR=$(pkg-config --variable=completionsdir bash-completion)
-else
-  echo "Setting completions directory manually."
-  BASHCOMPLETIONDIR=/usr/share/bash-completion/completions
-fi
+zcat $CWD/020_no-parallel-make.diff.gz | patch -p0 --verbose || exit 1
+zcat $CWD/030_posix-completion.diff.gz | patch -p0 --verbose || exit 1
 
 sed -i -e '/@PA_BINARY@/ imkdir -p \$HOME/.config/pulse' src/daemon/start-pulseaudio-x11.in
 echo "X-MATE-Autostart-Phase=Initialization" >>src/daemon/pulseaudio.desktop.in
@@ -84,32 +74,24 @@ CXXFLAGS="$SLKCFLAGS" \
   --sysconfdir=/etc \
   --localstatedir=/var \
   --mandir=/usr/man \
-  --enable-orc=${ORC} \
-  --enable-hal-compat \
+  --enable-orc \
   --disable-static \
   --disable-default-build-tests \
   --disable-tcpwrap \
+  --disable-hal-compat \
   --with-system-user=pulse \
   --with-system-group=pulse \
   --with-access-group=audio \
-  --with-bash-completion-dir=$BASHCOMPLETIONDIR \
+  --with-bash-completion-dir=/usr/share/bash-completion/completions \
   --build=$ARCH-slackware-linux
 
 make -j1
 make install-strip DESTDIR=$PKG
 
-mv $PKG/etc/pulse/client.conf $PKG/etc/pulse/client.conf.new
-mv $PKG/etc/pulse/default.pa $PKG/etc/pulse/default.pa.new
-mv $PKG/etc/pulse/daemon.conf $PKG/etc/pulse/daemon.conf.new
-
-mkdir -p $PKG/etc/rc.d
-cp $CWD/rc.pulseaudio $PKG/etc/rc.d/rc.pulseaudio.new
+for f in $( find $PKG/etc/pulse/ -type f ) ; do mv $f $f.new ; done
 
 find $PKG/usr/man -type f -exec gzip -9 {} \;
 for i in $( find $PKG/usr/man -type l ) ; do ln -s $( readlink $i ).gz $i.gz ; rm $i ; done
-
-mkdir -p $PKG/var/lib/pulse/.config/pulse
-chown -R pulse:pulse $PKG/var/lib/pulse
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
 cp -a *GPL LICENSE README $PKG/usr/doc/$PRGNAM-$VERSION
