@@ -8,8 +8,6 @@ pangox-compat
 cinnamon-session
 libgnomekbd
 speex
-json-c
-pulseaudio
 libgusb
 colord
 libgtop

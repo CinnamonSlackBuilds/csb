@@ -48,8 +48,6 @@ for dir in \
   cinnamon-session \
   libgnomekbd \
   speex \
-  json-c \
-  pulseaudio \
   libgusb \
   colord \
   libgtop \
