@@ -32,6 +32,7 @@ INST=1
 
 # This is where all the compilation and final results will be placed
 TMP=${TMP:-/tmp}
+OUTPUT=${OUTPUT:-$TMP}
 
 # This is the original directory where you started this script
 CSBROOT=$(pwd)
@@ -104,7 +105,7 @@ for dir in \
   fi
 
   # The real build starts here
-  sh ${package}.SlackBuild || exit 1
+  TMP=$TMP OUTPUT=$OUTPUT sh ${package}.SlackBuild || exit 1
   if [ "$INST" = "1" ]; then
     PACKAGE=`ls $TMP/${package}-${version}-*-${build}*.txz`
     if [ -f "$PACKAGE" ]; then
