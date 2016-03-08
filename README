@@ -7,7 +7,7 @@ The Cinnamon packages are built with a minimum set of dependencies, but still
 provides a working desktop.
 
 Binary packages of Cinnamon for Slackware 14.1 for both ARCH (x86 and x86_64)
-can be obtained from : http://www.slackware.org.uk/csb/. Binaries are built
+can be obtained from : http://www.slackware.uk/csb/. Binaries are built
 against Slackware 14.1.
 
 If you have custom installation, building from the source is the recommended
