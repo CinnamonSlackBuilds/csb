@@ -31,8 +31,8 @@
 INST=1
 
 # This is where all the compilation and final results will be placed
-TMP=${TMP:-/tmp}
-OUTPUT=${OUTPUT:-$TMP}
+TMP=${TMP:-/tmp/csb}
+OUTPUT=${OUTPUT:-/tmp}
 
 # This is the original directory where you started this script
 CSBROOT=$(pwd)
@@ -107,7 +107,7 @@ for dir in \
   # The real build starts here
   TMP=$TMP OUTPUT=$OUTPUT sh ${package}.SlackBuild || exit 1
   if [ "$INST" = "1" ]; then
-    PACKAGE=`ls $TMP/${package}-${version}-*-${build}*.txz`
+    PACKAGE=`ls $OUTPUT/${package}-${version}-*-${build}*.txz`
     if [ -f "$PACKAGE" ]; then
       upgradepkg --install-new --reinstall "$PACKAGE"
     else
