@@ -2,7 +2,7 @@
 
 # Slackware build script for muffin
 
-# Copyright 2014-2015 Willy Sudiarto Raharjo <willysr@slackware-id.org>
+# Copyright 2014-2016 Willy Sudiarto Raharjo <willysr@slackware-id.org>
 # All rights reserved.
 #
 # Redistribution and use of this script, with or without modification, is
@@ -23,7 +23,7 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=muffin
-VERSION=${VERSION:-2.8.4}
+VERSION=${VERSION:-2.8.5}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
