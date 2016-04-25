@@ -2,7 +2,7 @@
 
 # Slackware build script for cinnamon-themes
 
-# Copyright 2015 Willy Sudiarto Raharjo <willysr@slackware-id.org>
+# Copyright 2015-2016 Willy Sudiarto Raharjo <willysr@slackware-id.org>
 # All rights reserved.
 #
 # Redistribution and use of this script, with or without modification, is
@@ -23,8 +23,8 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=cinnamon-themes
-VERSION=${VERSION:-2016.03.04}
-COMMITVER=${COMMITVER:-034d25011b1e41a3fc0fb229df4f2da06e33b737}
+VERSION=${VERSION:-2016.04.22}
+COMMITVER=${COMMITVER:-dff8d04006d5b28c12d68b47996e7dad507ea4c6}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
