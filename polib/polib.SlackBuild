@@ -70,6 +70,11 @@ find -L . \
 
 python setup.py install --root=$PKG
 
+# Check for python3
+if [ -f /usr/bin/python3 ]; then
+  python3 setup.py install --root=$PKG
+fi
+
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
 
