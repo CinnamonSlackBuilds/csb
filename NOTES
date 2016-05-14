@@ -15,14 +15,9 @@ NOTES
 
 5. This scripts are tested on VM environment only!!
 
-6. Pulseaudio script will add UID/GID 216 to your system automatically
-   if it doesn't exist yet. This is the UID/GID assigned according
-   to SBo. I added this on the script to make the build script can
-   run without any intervention at all during building.
-
-7. Some code in cinnamon packages are hardcoded to /usr/lib, so even
+6. Some code in cinnamon packages are hardcoded to /usr/lib, so even
    in x86_64, they will be installed in /usr/lib to avoid breakage.
 
-8. I removed webkit-related screensaver in cinnamon-screensaver to avoid
+7. I removed webkit-related screensaver in cinnamon-screensaver to avoid
    building webkitgtk which is very time consuming. It still has the
    default screensaver that is able to lock your desktop (only requires PAM).
