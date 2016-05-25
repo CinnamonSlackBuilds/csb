@@ -13,11 +13,9 @@ NOTES
    required by some packages. There *might* be some issues caused
    by usage of older glib version. Let me know if i miss anything.
 
-5. This scripts are tested on VM environment only!!
-
-6. Some code in cinnamon packages are hardcoded to /usr/lib, so even
+5. Some code in cinnamon packages are hardcoded to /usr/lib, so even
    in x86_64, they will be installed in /usr/lib to avoid breakage.
 
-7. I removed webkit-related screensaver in cinnamon-screensaver to avoid
+6. I removed webkit-related screensaver in cinnamon-screensaver to avoid
    building webkitgtk which is very time consuming. It still has the
    default screensaver that is able to lock your desktop (only requires PAM).
