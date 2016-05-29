@@ -40,6 +40,7 @@ CSBROOT=$(pwd)
 # Loop for all packages
 for dir in \
   python3 \
+  py3cairo \
   ptyprocess \
   gnome-common \
   mozjs \
