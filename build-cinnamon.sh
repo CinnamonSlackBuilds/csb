@@ -41,6 +41,7 @@ CSBROOT=$(pwd)
 for dir in \
   python3 \
   py3cairo \
+  pygobject3-python3 \
   ptyprocess \
   gnome-common \
   mozjs \

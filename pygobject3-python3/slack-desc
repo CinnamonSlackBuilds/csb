@@ -1,0 +1,12 @@
+                  |-----handy-ruler------------------------------------------------------|
+pygobject3-python3: pygobject3-python3 (GObject bindings for Python3)
+pygobject3-python3:
+pygobject3-python3: This archive contains bindings for the GLib, and GObject, to be used
+pygobject3-python3: in Python. It is a fairly complete set of bindings, it's already
+pygobject3-python3: rather useful, and is usable to write moderately complex programs.
+pygobject3-python3:
+pygobject3-python3: Home page: http://www.pygtk.org/
+pygobject3-python3:
+pygobject3-python3:
+pygobject3-python3:
+pygobject3-python3:
