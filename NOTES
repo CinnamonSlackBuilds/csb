@@ -1,21 +1,16 @@
 NOTES
 =====================
 
-1. I'm using the latest Slackware release as base (currently 14.1).
+1. I'm using the latest Slackware release as base (currently 14.2).
 
 2. PAM is needed to build several core packages of cinnamon. I have
    tried to avoid this, but it seems to be inevitable.
 
-3. I tried to avoid systemd on this repository, thus some packages
-   are still using older version. So far, it works.
+3. I tried to avoid systemd on this repository. So far, it worked.
 
-4. I avoid changing/upgrading Slackware's glib packages which is
-   required by some packages. There *might* be some issues caused
-   by usage of older glib version. Let me know if i miss anything.
-
-5. Some code in cinnamon packages are hardcoded to /usr/lib, so even
+4. Some code in cinnamon packages are hardcoded to /usr/lib, so even
    in x86_64, they will be installed in /usr/lib to avoid breakage.
 
-6. I removed webkit-related screensaver in cinnamon-screensaver to avoid
+5. I removed webkit-related screensaver in cinnamon-screensaver to avoid
    building webkitgtk which is very time consuming. It still has the
    default screensaver that is able to lock your desktop (only requires PAM).

@@ -6,9 +6,9 @@ desktop environment (http://cinnamon.linuxmint.com) on top of Slackware Linux.
 The Cinnamon packages are built with a minimum set of dependencies, but still
 provides a working desktop.
 
-Binary packages of Cinnamon for Slackware 14.1 for both ARCH (x86 and x86_64)
+Binary packages of Cinnamon for Slackware 14.2 for both ARCH (x86 and x86_64)
 can be obtained from : http://www.slackware.uk/csb/. Binaries are built
-against Slackware 14.1.
+against Slackware 14.2.
 
 If you have custom installation, building from the source is the recommended
 way to make sure it is linked with the libraries available on your machine.
@@ -21,26 +21,17 @@ How to build and install the CINNAMON packages using these scripts:
 
 3.  Install bash-completion from /extra before building the packages.
 
-4.  Run libtest.sh script in test-script directory as root to make sure your
-    libraries are not corrupted. These errors are safe and can be ignored:
-    lddlibc4: cannot read header from `/usr/bin/htmlview': No such file or directory
-    lddlibc4: cannot read header from `/usr/bin/krdb': No such file or directory
-    lddlibc4: cannot read header from `/usr/bin/pnmnoraw': No such file or directory
-    lddlibc4: cannot read header from `/usr/bin/pnmtoplainpnm': No such file or directory
-    If you get a result of Invalid ELF header, that means one of your libraries
-    are corrupted and must be fixed first before building this packages.
-
-5.  Build the packages according to the BUILD_ORDER manually.
+4.  Build the packages according to the BUILD_ORDER manually.
     If you wish to run an automated build script, please use the 'build-cinnamon.sh'
     in the root directory which will build and install all the cinnamon packages
     including the necessary dependencies.
     NOTE: In certain cases, the automated build script *may* failed.
     Some known issues are documented in KNOWN_ISSUES.
 
-6.  Once the packages are built and installed, you can use 'xwmconfig' 
+5.  Once the packages are built and installed, you can use 'xwmconfig' 
     to select the cinnamon session. Run startx to start Cinnamon Desktop.
 
-7.  Enjoy and let me know of any issues or suggestions/improvements. 
+6.  Enjoy and let me know of any issues or suggestions/improvements. 
     Email is: willysr@slackware-id.org
 
 Thanks!
