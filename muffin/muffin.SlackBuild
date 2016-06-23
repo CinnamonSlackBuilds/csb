@@ -23,7 +23,7 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=muffin
-VERSION=${VERSION:-3.0.4}
+VERSION=${VERSION:-3.0.5}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
@@ -82,6 +82,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --docdir=/usr/doc/$PRGNAM-$VERSION \
   --enable-introspection=yes \
   --disable-schemas-compile \
+  --disable-static \
   --enable-compile-warnings=no \
   --build=$ARCH-slackware-linux
 
