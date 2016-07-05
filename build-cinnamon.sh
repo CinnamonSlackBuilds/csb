@@ -115,7 +115,7 @@ for dir in \
   # The real build starts here
   TMP=$TMP OUTPUT=$OUTPUT sh ${package}.SlackBuild || exit 1
   if [ "$INST" = "1" ]; then
-    PACKAGE=`ls $OUTPUT/${package}-${version}-*-${build}*.txz`
+    PACKAGE=`ls $OUTPUT/${package}-${version}-*-${build}*csb.txz`
     if [ -f "$PACKAGE" ]; then
       upgradepkg --install-new --reinstall "$PACKAGE"
     else
