@@ -37,6 +37,9 @@ OUTPUT=${OUTPUT:-/tmp}
 # This is the original directory where you started this script
 CSBROOT=$(pwd)
 
+# Check for duplicate sources (default: OFF)
+CHECKDUPLICATE=0
+
 # Loop for all packages
 for dir in \
   python3 \
@@ -98,13 +101,15 @@ for dir in \
   # Get the build
   build=$(cat ${package}.SlackBuild | grep "BUILD:" | cut -d "-" -f2 | rev | cut -c 2- | rev)
 
-  # Check for duplicate sources
-  sourcefile="$(ls -l $CSBROOT/$dir/${package}-*.tar.?z* | wc -l)"
-  if [ $sourcefile -gt 1 ]; then
-    echo "You have following duplicate sources:"
-    ls $CSBROOT/$dir/${package}-*.tar.?z* | cut -d " " -f1
-    echo "Please delete sources other than ${package}-$version to avoid problems"
-    exit 1
+  if [ $CHECKDUPLICATE -eq 1 ]; then
+    # Check for duplicate sources
+    sourcefile="$(ls -l $CSBROOT/$dir/${package}-*.tar.?z* | wc -l)"
+    if [ $sourcefile -gt 1 ]; then
+      echo "You have following duplicate sources:"
+      ls $CSBROOT/$dir/${package}-*.tar.?z* | cut -d " " -f1
+      echo "Please delete sources other than ${package}-$version to avoid problems"
+      exit 1
+    fi
   fi
 
   # The real build starts here
