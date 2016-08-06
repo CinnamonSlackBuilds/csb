@@ -88,6 +88,7 @@ for dir in \
   nemo \
   cinnamon-screensaver \
   cinnamon-themes \
+  mint-y-theme \
   ; do
   # Get the package name
   package=$(echo $dir | cut -f2- -d /)
