@@ -36,7 +36,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c https://github.com/linuxmint/mint-y-theme/archive/660ab557e89006759c848c66b6b5174f2c6c566d.zip
+wget -c https://github.com/linuxmint/mint-y-theme/archive/$COMMITVER.zip
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/csb}
