@@ -90,6 +90,7 @@ for dir in \
   nemo \
   cinnamon-screensaver \
   cinnamon-themes \
+  mint-y-theme \
   cinnamon \
   ; do
   # Get the package name
