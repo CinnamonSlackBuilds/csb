@@ -91,6 +91,7 @@ for dir in \
   cinnamon-screensaver \
   cinnamon-themes \
   mint-y-theme \
+  mint-y-icons \
   cinnamon \
   ; do
   # Get the package name
