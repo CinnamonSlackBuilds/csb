@@ -16,6 +16,8 @@ way to make sure it is linked with the libraries available on your machine.
 How to build and install the CINNAMON packages using these scripts:
 
 1.  Clone the Git repo or download a tarball/zip of the repo.
+    Master branch is recommended if you are using current. Otherwise, use
+    stable branch matching your Slackware version; eg. 14.2.
 
 2.  You may want to read NOTES before building
 
