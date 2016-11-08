@@ -46,6 +46,7 @@ for dir in \
   py3cairo \
   pygobject3-python3 \
   ptyprocess \
+  autoconf-archive \
   gnome-common \
   mozjs \
   cjs \
