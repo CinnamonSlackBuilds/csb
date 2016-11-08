@@ -26,7 +26,7 @@
 
 PRGNAM=BeautifulSoup
 SRCNAM=beautifulsoup4
-VERSION=${VERSION:-4.4.1}
+VERSION=${VERSION:-4.5.1}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
@@ -38,7 +38,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c https://www.crummy.com/software/BeautifulSoup/bs4/download/4.4/$SRCNAM-$VERSION.tar.gz
+wget -c https://www.crummy.com/software/BeautifulSoup/bs4/download/4.5/$SRCNAM-$VERSION.tar.gz
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/csb}
