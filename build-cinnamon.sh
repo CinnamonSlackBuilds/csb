@@ -50,6 +50,9 @@ for dir in \
   gnome-common \
   mozjs \
   cjs \
+  pam \
+  pam_unix2 \
+  python-pam \
   cinnamon-desktop \
   json-glib \
   pangox-compat \
@@ -78,9 +81,6 @@ for dir in \
   BeautifulSoup \
   lxml \
   metacity \
-  pam \
-  pam_unix2 \
-  python-pam \
   accountsservice \
   alacarte \
   cinnamon \

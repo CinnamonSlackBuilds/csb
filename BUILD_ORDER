@@ -6,6 +6,9 @@ autoconf-archive
 gnome-common
 mozjs
 cjs
+pam
+pam_unix2
+python-pam
 cinnamon-desktop
 json-glib
 pangox-compat
@@ -34,9 +37,6 @@ pexpect
 BeautifulSoup
 lxml
 metacity
-pam
-pam_unix2
-python-pam
 accountsservice
 alacarte
 cinnamon
