@@ -84,12 +84,12 @@ for dir in \
   metacity \
   accountsservice \
   alacarte \
-  cinnamon \
   polib \
   cinnamon-translations \
   nemo \
   cinnamon-screensaver \
   cinnamon-themes \
+  cinnamon \
   ; do
   # Get the package name
   package=$(echo $dir | cut -f2- -d /)
