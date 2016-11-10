@@ -48,6 +48,7 @@ for dir in \
   ptyprocess \
   autoconf-archive \
   gnome-common \
+  xapps \
   mozjs \
   cjs \
   pam \
