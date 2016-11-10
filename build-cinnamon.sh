@@ -84,7 +84,6 @@ for dir in \
   metacity \
   accountsservice \
   alacarte \
-  cinnamon \
   polib \
   cinnamon-translations \
   nemo \
@@ -92,6 +91,7 @@ for dir in \
   cinnamon-themes \
   mint-y-theme \
   mint-y-icons \
+  cinnamon \
   ; do
   # Get the package name
   package=$(echo $dir | cut -f2- -d /)
