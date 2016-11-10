@@ -4,6 +4,7 @@ pygobject3-python3
 ptyprocess
 autoconf-archive
 gnome-common
+xapps
 mozjs
 cjs
 pam

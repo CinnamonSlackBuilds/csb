@@ -1,0 +1,12 @@
+     |-----handy-ruler------------------------------------------------------|
+xapps: xapps (Common library for X-Apps project)
+xapps:
+xapps: This project gathers the components which are common to multiple
+xapps: desktop environments and required to implement cross-DE solutions.
+xapps:
+xapps:
+xapps: Project URL: https://github.com/linuxmint/xapps
+xapps:
+xapps:
+xapps:
+xapps:
