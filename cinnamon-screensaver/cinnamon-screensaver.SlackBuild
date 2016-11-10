@@ -82,8 +82,6 @@ CXXFLAGS="$SLKCFLAGS" \
   --mandir=/usr/man \
   --docdir=/usr/doc/$PRGNAM-$VERSION \
   --enable-compile-warnings=no \
-  --with-mit-ext \
-  --enable-locking \
   --build=$ARCH-slackware-linux
 
 make
