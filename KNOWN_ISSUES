@@ -1,10 +1,6 @@
 KNOWN ISSUES
 =====================
-- In case of cinnamon-control-center failed on NMDevice, reinstall
-  Network-Manager and rebuild
-- In case of muffin failed on SnMonitorContext, reinstall startup-notification
-  and rebuild
-- If KDE apps do not work on Cinnamon, try reinstalling qt
+- locking still doesn't work. Probably related to PAM or ConsoleKit
 - Launching terminal from nemo shortcut did not work since they are not yet defined.
   Use this command to set it to other terminal (eg. xfce4-terminal)
   Thanks to Michael Amadio
