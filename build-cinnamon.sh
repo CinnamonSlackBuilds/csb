@@ -48,7 +48,6 @@ for dir in \
   ptyprocess \
   autoconf-archive \
   gnome-common \
-  xapps \
   mozjs \
   cjs \
   pam \
@@ -59,6 +58,7 @@ for dir in \
   pangox-compat \
   cinnamon-session \
   libgnomekbd \
+  xapps \
   speex \
   libgusb \
   colord \
