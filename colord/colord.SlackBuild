@@ -24,7 +24,7 @@
 
 PRGNAM=colord
 VERSION=${VERSION:-1.2.12}
-BUILD=${BUILD:-1}
+BUILD=${BUILD:-2}
 TAG=${TAG:-_csb}
 
 if [ -z "$ARCH" ]; then
@@ -97,6 +97,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --enable-polkit \
   --enable-sane \
   --enable-libcolordcompat \
+  --enable-vala \
   --disable-systemd-login \
   --disable-argyllcms-sensor \
   --with-daemon-user=colord \

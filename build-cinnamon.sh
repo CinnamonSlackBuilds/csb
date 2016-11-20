@@ -42,6 +42,7 @@ CHECKDUPLICATE=0
 
 # Loop for all packages
 for dir in \
+  vala \
   python3 \
   dbus-python3 \
   py3cairo \
@@ -76,7 +77,6 @@ for dir in \
   clutter \
   clutter-gtk \
   muffin \
-  vala \
   libgee \
   caribou \
   pexpect \
