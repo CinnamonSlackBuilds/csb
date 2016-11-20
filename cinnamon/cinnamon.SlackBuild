@@ -24,7 +24,7 @@
 
 PRGNAM=cinnamon
 VERSION=${VERSION:-3.2.1}
-BUILD=${BUILD:-1}
+BUILD=${BUILD:-2}
 TAG=${TAG:-_csb}
 
 if [ -z "$ARCH" ]; then
@@ -73,10 +73,6 @@ find -L . \
 
 # Use cinnamon theme by default
 patch -p1 < $CWD/default-theme.patch
-
-# Cinnamon has no upstream backgrounds, use GNOME backgrounds instead
-sed -i 's|/usr/share/cinnamon-background-properties|/usr/share/gnome-background-properties|' \
-    files/usr/share/cinnamon/cinnamon-settings/modules/cs_backgrounds.py
 
 # Fix selected background color in Cinnamon Settings for Adwaita theme
 sed -i 's/@selected_bg_color;/@theme_selected_bg_color;/' \
@@ -132,6 +128,14 @@ cp -a COPYING README $PKG/usr/doc/$PRGNAM-$VERSION
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 find $PKG/usr/doc/$PRGNAM-$VERSION/ -type f -exec chmod 644 {} \;
 chown -R root:root $PKG/usr/doc/$PRGNAM-$VERSION
+
+# provide some background wallpapers
+mkdir -p $PKG/usr/share/backgrounds/cinnamon/desktop/ $PKG/usr/share/cinnamon-background-properties/
+cp $CWD/slackware-background-*.png $PKG/usr/share/backgrounds/cinnamon/desktop/
+cp $CWD/slackware.xml $PKG/usr/share/cinnamon-background-properties/
+
+# override schema to provide a default Slackware background wallpaper
+cp $CWD/slackware-14.2.gschema.override $PKG/usr/share/glib-2.0/schemas
 
 mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
