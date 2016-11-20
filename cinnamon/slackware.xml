@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE wallpapers SYSTEM "cinnamon-wp-list.dtd">
+<wallpapers>
+	<wallpaper deleted="false">
+		<name>Slackware Linux (Blue)</name>
+		<filename>/usr/share/backgrounds/cinnamon/desktop/slackware-background-blue.png</filename>
+		<options>zoom</options>
+		<artist>Caveman</artist>
+	</wallpaper>
+	<wallpaper deleted="false">
+                <name>Slackware Linux (Black)</name>
+                <filename>/usr/share/backgrounds/cinnamon/desktop/slackware-background-black.png</filename>
+                <options>zoom</options>
+                <artist>Caveman</artist>
+        </wallpaper>
+	<wallpaper deleted="false">
+                <name>Slackware Linux (SubGenius)</name>
+                <filename>/usr/share/backgrounds/cinnamon/desktop/slackware-background-subgenius.png</filename>
+                <options>zoom</options>
+                <artist>Leggi Argomento</artist>
+        </wallpaper>
+	<wallpaper deleted="false">
+                <name>Slackware Linux (Light)</name>
+                <filename>/usr/share/backgrounds/cinnamon/desktop/slackware-background-light.png</filename>
+                <options>zoom</options>
+                <artist>Amarillo Linux Users Group</artist>
+        </wallpaper>
+</wallpapers>

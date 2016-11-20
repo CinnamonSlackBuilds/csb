@@ -1,0 +1,4 @@
+[org.cinnamon.desktop.background]
+picture-uri='file:///usr/share/backgrounds/cinnamon/desktop/slackware-background-blue.png'
+primary-color='#000000'
+secondary-color='#777777'
