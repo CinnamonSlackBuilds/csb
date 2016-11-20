@@ -14,3 +14,8 @@ NOTES
 5. I removed webkit-related screensaver in cinnamon-screensaver to avoid
    building webkitgtk which is very time consuming. It still has the
    default screensaver that is able to lock your desktop (only requires PAM).
+
+6. By default, preferred application used for opening directory is incorrectly
+   set to Audacious. To fix it, run the following commands
+   xdg-mime default nemo.desktop inode/directory
+   xdg-mime default nemo.desktop application/x-directory
