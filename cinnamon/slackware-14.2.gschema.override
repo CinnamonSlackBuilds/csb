@@ -1,4 +1,13 @@
+[org.cinnamon.desktop.screensaver]
+ask-for-away-message=false
+
 [org.cinnamon.desktop.background]
 picture-uri='file:///usr/share/backgrounds/cinnamon/desktop/slackware-background-blue.png'
 primary-color='#000000'
 secondary-color='#777777'
+
+[org.cinnamon.settings-daemon.peripherals.touchpad]
+disable-while-typing=true
+
+[org.cinnamon.theme]
+name="cinnamon"
