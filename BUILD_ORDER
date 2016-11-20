@@ -1,3 +1,4 @@
+vala
 python3
 dbus-python3
 py3cairo
@@ -32,7 +33,6 @@ cogl
 clutter
 clutter-gtk
 muffin
-vala
 libgee
 caribou
 pexpect
