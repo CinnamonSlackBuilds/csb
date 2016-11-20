@@ -43,6 +43,7 @@ CHECKDUPLICATE=0
 # Loop for all packages
 for dir in \
   python3 \
+  dbus-python3 \
   py3cairo \
   pygobject3-python3 \
   ptyprocess \
