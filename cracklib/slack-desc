@@ -1,0 +1,12 @@
+        |-----handy-ruler------------------------------------------------------|
+cracklib: cracklib (password crack library)
+cracklib:
+cracklib: CrackLib is a library containing a C function (well, lots of functions
+cracklib: really, but you only need to use one of them) which may be used in a
+cracklib: "passwd"-like program.
+cracklib:
+cracklib: The idea is simple: try to prevent users from choosing passwords that
+cracklib: could be guessed by "Crack" by filtering them out, at source.
+cracklib:
+cracklib:
+cracklib:

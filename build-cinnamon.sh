@@ -52,6 +52,7 @@ for dir in \
   gnome-common \
   mozjs \
   cjs \
+  cracklib \
   pam \
   pam_unix2 \
   python-pam \
