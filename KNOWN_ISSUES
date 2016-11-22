@@ -1,6 +1,5 @@
 KNOWN ISSUES
 =====================
-- locking still doesn't work. Probably related to PAM or ConsoleKit
 - Launching terminal from nemo shortcut did not work since they are not yet defined.
   Use this command to set it to other terminal (eg. xfce4-terminal)
   Thanks to Michael Amadio
