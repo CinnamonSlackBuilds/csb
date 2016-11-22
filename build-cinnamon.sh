@@ -54,7 +54,6 @@ for dir in \
   cjs \
   cracklib \
   pam \
-  pam_unix2 \
   python-pam \
   cinnamon-desktop \
   json-glib \
