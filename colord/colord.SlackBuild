@@ -24,7 +24,7 @@
 
 PRGNAM=colord
 VERSION=${VERSION:-1.2.12}
-BUILD=${BUILD:-2}
+BUILD=${BUILD:-3}
 TAG=${TAG:-_csb}
 
 if [ -z "$ARCH" ]; then
