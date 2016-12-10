@@ -44,6 +44,7 @@ CHECKDUPLICATE=0
 for dir in \
   vala \
   python3 \
+  setproctitle \
   dbus-python3 \
   py3cairo \
   pygobject3-python3 \
