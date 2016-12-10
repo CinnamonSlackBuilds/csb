@@ -23,7 +23,7 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=cinnamon-desktop
-VERSION=${VERSION:-3.2.1}
+VERSION=${VERSION:-3.2.2}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
@@ -97,9 +97,6 @@ cp -a AUTHORS COPYING* ChangeLog HACKING MAINTAINERS README $PKG/usr/doc/$PRGNAM
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 find $PKG/usr/doc/$PRGNAM-$VERSION/ -type f -exec chmod 644 {} \;
 chown -R root:root $PKG/usr/doc/$PRGNAM-$VERSION
-
-mkdir -p $PKG/etc/pam.d/
-install -m644 $CWD/cinnamon-desktop.pam $PKG/etc/pam.d/cinnamon-desktop
 
 mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
