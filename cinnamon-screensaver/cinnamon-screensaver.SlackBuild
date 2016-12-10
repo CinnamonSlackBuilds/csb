@@ -23,7 +23,7 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=cinnamon-screensaver
-VERSION=${VERSION:-3.2.6}
+VERSION=${VERSION:-3.2.7}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
@@ -83,6 +83,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --docdir=/usr/doc/$PRGNAM-$VERSION \
   --enable-compile-warnings=no \
   --enable-introspection=yes \
+  --enable-locking \
   --build=$ARCH-slackware-linux
 
 make
