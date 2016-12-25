@@ -76,7 +76,7 @@ CXXFLAGS="$SLKCFLAGS" \
 ./autogen.sh \
   --prefix=/usr \
   --libdir=/usr/lib${LIBDIRSUFFIX} \
-  --libexecdir=/usr/libexec/cinnamon-screensaver \
+  --libexecdir=/usr/lib${LIBDIRSUFFIX} \
   --sysconfdir=/etc \
   --localstatedir=/var \
   --mandir=/usr/man \
