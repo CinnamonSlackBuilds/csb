@@ -30,8 +30,7 @@
 # Modified by Willy Sudiarto Raharjo for CSB Project
 
 PRGNAM=speex
-VERSION=${VERSION:-1.2rc2}
-DSPVERSION=${DSPVERSION:-1.2rc3}
+VERSION=${VERSION:-1.2.0}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
@@ -43,7 +42,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c http://downloads.xiph.org/releases/speex/speex-1.2rc2.tar.gz http://downloads.xiph.org/releases/speex/speexdsp-1.2rc3.tar.gz
+wget -c http://downloads.us.xiph.org/releases/$PRGNAM/$PRGNAM-$VERSION.tar.gz
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/csb}
@@ -69,35 +68,6 @@ set -e
 rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
-rm -rf ${PRGNAM}dsp-$DSPVERSION
-tar xvf $CWD/${PRGNAM}dsp-$DSPVERSION.tar.gz
-cd ${PRGNAM}dsp-$DSPVERSION
-chown -R root:root .
-find -L . \
- \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
-  -o -perm 511 \) -exec chmod 755 {} \; -o \
- \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
-  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
-
-CFLAGS="$SLKCFLAGS" \
-CXXFLAGS="$SLKCFLAGS" \
-./configure \
-  --prefix=/usr \
-  --libdir=/usr/lib${LIBDIRSUFFIX} \
-  --mandir=/usr/man \
-  --docdir=/usr/doc/$PRGNAM-$VERSION/dsp \
-  --enable-static=no \
-  --enable-sse \
-  --build=$ARCH-slackware-linux
-
-# Hack to also make it look in the right directory on multilib systems
-make LDFLAGS="-L/usr/lib${LIBDIRSUFFIX}"
-make install DESTDIR=$PKG
-
-cp -a README* TODO $PKG/usr/doc/$PRGNAM-$VERSION/dsp
-find $PKG/usr/doc -type f -exec chown root:root {} \; -exec chmod 644 {} \;
-
-cd $TMP
 rm -rf $PRGNAM-$VERSION
 tar xvf $CWD/$PRGNAM-$VERSION.tar.gz
 cd $PRGNAM-$VERSION
@@ -122,6 +92,7 @@ SPEEXDSP_LIBS="-L$PKG/usr/lib${LIBDIRSUFFIX} -lspeexdsp" \
   --docdir=/usr/doc/$PRGNAM-$VERSION \
   --enable-static=no \
   --enable-binaries \
+  --enable-sse \
   --build=$ARCH-slackware-linux
 
 # Hack to also make it look in the right directory on multilib systems
