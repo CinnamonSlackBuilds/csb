@@ -4,3 +4,4 @@ KNOWN ISSUES
   Use this command to set it to other terminal (eg. xfce4-terminal)
   Thanks to Michael Amadio
   gsettings set org.cinnamon.desktop.default-applications.terminal exec xfce4-terminal
+  Status: FIXED (Sun Jan  8 01:14:57 UTC 2017)
