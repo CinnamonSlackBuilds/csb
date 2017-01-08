@@ -11,3 +11,6 @@ disable-while-typing=true
 
 [org.cinnamon.theme]
 name="cinnamon"
+
+[org.cinnamon.desktop.default-applications.terminal]
+exec="xfce4-terminal"
