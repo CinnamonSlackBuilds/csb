@@ -3,7 +3,7 @@
 # Slackware build script for krb5
 
 # Copyright (c) 2009, Tom Canich, State College, Pennsylvania, USA
-# Copyright 2015-2016 Willy Sudiarto Raharjo <willysr@slackbuilds.org>
+# Copyright 2015-2017 Willy Sudiarto Raharjo <willysr@slackbuilds.org>
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -32,7 +32,7 @@
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=krb5
-VERSION=${VERSION:-1.14.4}
+VERSION=${VERSION:-1.15.1}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
@@ -44,7 +44,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c http://web.mit.edu/kerberos/dist/krb5/1.14/krb5-$VERSION.tar.gz
+wget -c http://web.mit.edu/kerberos/dist/krb5/1.15/krb5-$VERSION.tar.gz
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/csb}
@@ -74,7 +74,6 @@ rm -rf $PRGNAM-$VERSION
 tar xvf $CWD/$PRGNAM-$VERSION.tar.gz
 cd $PRGNAM-$VERSION
 
-patch -p1 < $CWD/krb5-ldflags.patch
 sed -i "/KRB5ROOT=/s/\/local//" src/util/ac_check_krb5.m4
 
 cd src
