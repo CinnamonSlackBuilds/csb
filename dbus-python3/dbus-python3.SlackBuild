@@ -27,7 +27,7 @@
 PRGNAM=dbus-python3
 SRCNAM=$(echo $PRGNAM | tr -d 3)
 VERSION=${VERSION:-1.2.4}
-BUILD=${BUILD:-1}
+BUILD=${BUILD:-2}
 TAG=${TAG:-_csb}
 
 if [ -z "$ARCH" ]; then
