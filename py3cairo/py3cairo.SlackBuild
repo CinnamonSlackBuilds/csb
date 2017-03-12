@@ -26,7 +26,7 @@
 PRGNAM=py3cairo
 SRCNAM=pycairo
 VERSION=${VERSION:-1.10.0}
-BUILD=${BUILD:-1}
+BUILD=${BUILD:-2}
 TAG=${TAG:-_csb}
 
 if [ -z "$ARCH" ]; then
