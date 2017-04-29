@@ -35,7 +35,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c http://www.freedesktop.org/software/colord/releases/$PRGNAM-$VERSION.tar.xz
+wget -c https://www.freedesktop.org/software/colord/releases/$PRGNAM-$VERSION.tar.xz
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/csb}
