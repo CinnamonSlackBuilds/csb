@@ -12,6 +12,7 @@ cjs
 cracklib
 pam
 python-pam
+accountsservice
 cinnamon-desktop
 json-glib
 pangox-compat
@@ -40,7 +41,6 @@ pexpect
 BeautifulSoup
 lxml
 metacity
-accountsservice
 alacarte
 polib
 cinnamon-translations
