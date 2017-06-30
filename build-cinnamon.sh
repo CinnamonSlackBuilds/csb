@@ -56,6 +56,7 @@ for dir in \
   cracklib \
   pam \
   python-pam \
+  accountsservice \
   cinnamon-desktop \
   json-glib \
   pangox-compat \
@@ -84,7 +85,6 @@ for dir in \
   BeautifulSoup \
   lxml \
   metacity \
-  accountsservice \
   alacarte \
   polib \
   cinnamon-translations \
