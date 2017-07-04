@@ -111,6 +111,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --docdir=/usr/doc/$PRGNAM-$VERSION \
   --enable-introspection=yes \
   --enable-compile-warnings=no \
+  --enable-gtk-doc=no \
   --disable-schemas-compile \
   --build=$ARCH-slackware-linux
 
