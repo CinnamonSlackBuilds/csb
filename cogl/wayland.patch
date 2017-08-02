@@ -1,0 +1,25 @@
+From da5e0859e15eeb93fa81bd645c93425f6acef0cd Mon Sep 17 00:00:00 2001
+From: Felix Zhang <fezhang@suse.com>
+Date: Mon, 29 Aug 2016 15:02:14 +0800
+Subject: [PATCH] fix build failure with -Werror=undef
+
+---
+ cogl/winsys/cogl-winsys-egl.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cogl/winsys/cogl-winsys-egl.c b/cogl/winsys/cogl-winsys-egl.c
+index 39bfd88..4a9f3aa 100644
+--- a/cogl/winsys/cogl-winsys-egl.c
++++ b/cogl/winsys/cogl-winsys-egl.c
+@@ -1029,7 +1029,7 @@ _cogl_egl_create_image (CoglContext *ctx,
+     egl_ctx = EGL_NO_CONTEXT;
+   else
+ #endif
+-#if COGL_HAS_WAYLAND_EGL_SERVER_SUPPORT
++#ifdef COGL_HAS_WAYLAND_EGL_SERVER_SUPPORT
+   /* The WL_bind_wayland_display spec states that EGL_NO_CONTEXT is to be used
+    * in conjunction with the EGL_WAYLAND_BUFFER_WL target */
+   if (target == EGL_WAYLAND_BUFFER_WL)
+-- 
+2.6.6
+
