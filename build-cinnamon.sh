@@ -45,7 +45,6 @@ for dir in \
   vala \
   setproctitle \
   dbus-python3 \
-  py3cairo \
   ptyprocess \
   autoconf-archive \
   gnome-common \
