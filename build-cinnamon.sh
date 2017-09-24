@@ -44,7 +44,6 @@ CHECKDUPLICATE=0
 for dir in \
   vala \
   setproctitle \
-  dbus-python3 \
   ptyprocess \
   autoconf-archive \
   gnome-common \
