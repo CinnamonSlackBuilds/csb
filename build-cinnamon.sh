@@ -43,7 +43,6 @@ CHECKDUPLICATE=0
 # Loop for all packages
 for dir in \
   vala \
-  python3 \
   setproctitle \
   dbus-python3 \
   py3cairo \
