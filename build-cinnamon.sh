@@ -46,7 +46,6 @@ for dir in \
   setproctitle \
   dbus-python3 \
   py3cairo \
-  pygobject3-python3 \
   ptyprocess \
   autoconf-archive \
   gnome-common \
