@@ -25,7 +25,7 @@
 # Modified by Willy Sudiarto Raharjo for CSB Project
 
 PRGNAM=json-glib
-VERSION=${VERSION:-1.2.8}
+VERSION=${VERSION:-1.4.2}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
@@ -37,7 +37,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c http://ftp.gnome.org/pub/GNOME/sources/json-glib/1.2/$PRGNAM-$VERSION.tar.xz
+wget -c http://ftp.gnome.org/pub/GNOME/sources/json-glib/1.4/$PRGNAM-$VERSION.tar.xz
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/csb}
@@ -73,21 +73,23 @@ find -L . \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
-CFLAGS="$SLKCFLAGS" \
-./configure \
+mkdir -p build
+cd build
+meson setup \
   --prefix=/usr \
-  --sysconfdir=/etc \
-  --localstatedir=/var/lib \
+  --buildtype=release \
+  --libdir=lib${LIBDIRSUFFIX} \
+  --libexecdir=/usr/lib${LIBDIRSUFFIX} \
   --mandir=/usr/man \
-  --disable-static \
-  --libdir=/usr/lib${LIBDIRSUFFIX} \
-  --build=$ARCH-slackware-linux
+  -Ddocs=true \
+  ..
 
-make
-make install-strip DESTDIR=$PKG
+  ninja
+  DESTDIR=$PKG ninja install
+cd ..
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
-cp -a ABOUT-NLS COPYING ChangeLog NEWS $PKG/usr/doc/$PRGNAM-$VERSION
+cp -a COPYING NEWS README.md $PKG/usr/doc/$PRGNAM-$VERSION
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 ln -s /usr/share/gtk-doc/html/json-glib $PKG/usr/doc/$PRGNAM-$VERSION/html
 
