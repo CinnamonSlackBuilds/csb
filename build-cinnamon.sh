@@ -91,6 +91,7 @@ for dir in \
   mint-y-theme \
   mint-y-icons \
   cinnamon \
+  pia-manager \
   ; do
   # Get the package name
   package=$(echo $dir | cut -f2- -d /)
