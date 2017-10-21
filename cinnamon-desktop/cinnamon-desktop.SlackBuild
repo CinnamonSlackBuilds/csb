@@ -23,7 +23,7 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=cinnamon-desktop
-VERSION=${VERSION:-3.4.2}
+VERSION=${VERSION:-3.6.0}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
@@ -70,6 +70,9 @@ find -L . \
   -o -perm 511 \) -exec chmod 755 {} \; -o \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+
+# Use ConsoleKit instead of logind
+sed -i "s|<default>true</default>|<default>false</default>|g" schemas/org.cinnamon.desktop.session.gschema.xml.in.in
 
 CFLAGS="$SLKCFLAGS" \
 CXXFLAGS="$SLKCFLAGS" \
