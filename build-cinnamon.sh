@@ -90,6 +90,7 @@ for dir in \
   cinnamon-translations \
   nemo \
   python-xapp \
+  psutil \
   cinnamon-screensaver \
   cinnamon-themes \
   mint-y-theme \
