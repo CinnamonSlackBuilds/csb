@@ -86,6 +86,7 @@ for dir in \
   polib \
   cinnamon-translations \
   nemo \
+  python-xapp \
   cinnamon-screensaver \
   cinnamon-themes \
   mint-y-theme \
