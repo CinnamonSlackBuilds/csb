@@ -60,7 +60,6 @@ for dir in \
   cinnamon-session \
   libgnomekbd \
   xapps \
-  speex \
   libgusb \
   colord \
   libgtop \
