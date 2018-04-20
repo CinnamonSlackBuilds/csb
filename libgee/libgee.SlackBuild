@@ -8,7 +8,7 @@
 
 PRGNAM=libgee
 VERSION=${VERSION:-0.20.0}
-BUILD=${BUILD:-1}
+BUILD=${BUILD:-2}
 TAG=${TAG:-_csb}
 
 if [ -z "$ARCH" ]; then
@@ -66,6 +66,9 @@ CFLAGS="$SLKCFLAGS" \
 
 make
 make install DESTDIR=$PKG
+
+# Don't ship .la files:
+rm -f $PKG/{,usr/}lib${LIBDIRSUFFIX}/*.la
 
 $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
