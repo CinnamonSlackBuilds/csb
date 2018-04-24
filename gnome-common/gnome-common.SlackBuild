@@ -38,7 +38,7 @@ ARCH=noarch
 
 set -e
 
-wget -c http://ftp.gnome.org/pub/gnome/sources/gnome-common/3.18/$PRGNAM-$VERSION.tar.xz
+wget -c https://github.com/GNOME/gnome-common/archive/$VERSION/$PRGNAM-$VERSION.tar.gz
 
 rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
@@ -53,13 +53,13 @@ find -L . \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
-./configure --prefix=/usr --with-autoconf-archive
+./autogen.sh --prefix=/usr --with-autoconf-archive
 
 make
 make install DESTDIR=$PKG
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
-cp -a ChangeLog ChangeLog.pre-git $PKG/usr/doc/$PRGNAM-$VERSION
+cp -a COPYING ChangeLog.pre-git README $PKG/usr/doc/$PRGNAM-$VERSION
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 
 mkdir -p $PKG/install
