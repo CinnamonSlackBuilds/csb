@@ -23,10 +23,10 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=mozjs
-VERSION=${VERSION:-38.8.0}
+VERSION=${VERSION:-52.7.3}
 SRCNAM=firefox-${VERSION}esr.source
-DIRNAM=mozilla-esr38
-BUILD=${BUILD:-3}
+DIRNAM=firefox-${VERSION}
+BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
 if [ -z "$ARCH" ]; then
@@ -37,7 +37,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c https://ftp.mozilla.org/pub/firefox/releases/38.8.0esr/source/firefox-38.8.0esr.source.tar.bz2
+wget -c https://ftp.mozilla.org/pub/firefox/releases/52.7.3esr/source/firefox-52.7.3esr.source.tar.xz
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/csb}
@@ -61,11 +61,25 @@ fi
 set -e
 
 rm -rf $PKG
-mkdir -p $TMP $PKG $OUTPUT
+mkdir -p $TMP $PKG $OUTPUT $PKG/usr/lib${LIBDIRSUFFIX}
+
+# We need to use the incredibly ancient autoconf-2.13 for this  :/
+(
+cd $CWD/autoconf
+wget -c http://slackware.osuosl.org/slackware64-14.2/patches/source/mozilla-firefox/autoconf/autoconf-2.13.tar.xz
+./autoconf.build
+)
+PATH=$TMP/autoconf-tmp/usr/bin:$PATH
+
 cd $TMP
-rm -rf $DIRNAM
-tar xvf $CWD/$SRCNAM.tar.bz2
-cd $DIRNAM
+rm -rf firefox-unpack ${DIRNAM}esr
+mkdir firefox-unpack
+cd firefox-unpack
+tar xvf $CWD/$SRCNAM.tar.xz
+mv * ..
+cd ..
+rm -rf firefox-unpack
+cd ${DIRNAM}esr
 chown -R root:root .
 find -L . \
  \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
@@ -73,33 +87,22 @@ find -L . \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
-patch -Np1 < $CWD/mozjs38-fix-tracelogger.patch
-patch -Np1 < $CWD/mozjs38-shell-version.patch
-patch -Np1 < $CWD/mozjs38-pkg-config-version.patch
-patch -Np1 < $CWD/mozjs38-install-name.patch
-patch -Np1 < $CWD/mozjs38-copy-headers.patch
-patch -Np1 < $CWD/mozjs38-add-bracket.patch
-patch -Np1 < $CWD/mozjs38-1269317.patch
-
 cd js/src
 CFLAGS="$SLKCFLAGS -fno-delete-null-pointer-checks -fpermissive -fno-tree-vrp -fno-strict-aliasing" \
 CXXFLAGS="$SLKCFLAGS -fno-delete-null-pointer-checks -fpermissive -fno-tree-vrp -fno-strict-aliasing" \
 ./configure \
   --prefix=/usr \
   --libdir=/usr/lib${LIBDIRSUFFIX} \
-  --sysconfdir=/etc \
-  --disable-tests \
-  --disable-optimize \
+  --disable-debug \
+  --disable-debug-symbols \
+  --disable-strip \
+  --enable-optimize="-O2" \
   --enable-pie \
-  --enable-threadsafe \
-  --enable-ctypes \
-  --with-system-ffi   \
-  --with-system-nspr \
-  --with-system-zlib \
-  --with-system-icu \
+  --enable-posix-nspr-emulation \
+  --enable-release \
   --with-intl-api \
-  --enable-shared-js \
-  --build=$ARCH-slackware-linux
+  --with-system-zlib \
+  --enable-shared-js
 
 make
 make DESTDIR=$PKG install
@@ -108,12 +111,6 @@ find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | gr
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
 
 cd ../..
-
-mv $PKG/usr/include/mozjs- $PKG/usr/include/mozjs-38
-mv $PKG/usr/lib${LIBDIRSUFFIX}/libmozjs-.so $PKG/usr/lib${LIBDIRSUFFIX}/libmozjs-38.so
-mv $PKG/usr/lib${LIBDIRSUFFIX}/pkgconfig/mozjs-.pc $PKG/usr/lib${LIBDIRSUFFIX}/pkgconfig/mozjs-38.pc
-sed -i "s|lmozjs-|lmozjs-38|g" $PKG/usr/lib${LIBDIRSUFFIX}/pkgconfig/mozjs-38.pc
-sed -i "s|/mozjs-|/mozjs-38|g" $PKG/usr/lib${LIBDIRSUFFIX}/pkgconfig/mozjs-38.pc
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
 cp -a AUTHORS LEGAL LICENSE README.txt $PKG/usr/doc/$PRGNAM-$VERSION
