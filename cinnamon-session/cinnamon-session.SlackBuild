@@ -72,23 +72,27 @@ find -L . \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
 patch -p1 < $CWD/timeout.patch
+patch -p1 < $CWD/be5e7380ae.patch
+patch -p1 < $CWD/meson.patch
+sed -i "s|<upower.h>|<libupower-glib/upower.h>|g" cinnamon-session/csm-consolekit.c
+sed -i "s|<upower.h>|<libupower-glib/upower.h>|g" cinnamon-session/csm-logout-dialog.c
 
-CFLAGS="$SLKCFLAGS" \
-CXXFLAGS="$SLKCFLAGS" \
-./autogen.sh \
+mkdir -p build
+cd build
+meson setup \
   --prefix=/usr \
-  --libdir=/usr/lib${LIBDIRSUFFIX} \
-  --libexecdir=/usr/lib${LIBDIRSUFFIX}/cinnamon-session \
-  --sysconfdir=/etc \
-  --localstatedir=/var \
+  --buildtype=release \
+  --libdir=lib${LIBDIRSUFFIX} \
+  --libexecdir=/usr/lib${LIBDIRSUFFIX} \
   --mandir=/usr/man \
-  --docdir=/usr/doc/$PRGNAM-$VERSION \
-  --disable-schemas-compile \
-  --enable-gconf \
-  --build=$ARCH-slackware-linux
+  --buildtype=plain \
+  -Dwith-gconf=false \
+  -Dwith-docbook=false \
+  ..
 
-make
-make install DESTDIR=$PKG
+  ninja
+  DESTDIR=$PKG ninja install
+cd ..
 
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
@@ -105,7 +109,7 @@ mkdir -p $PKG/usr/share/apps/kdm/sessions
 ln -sf /usr/share/xsessions/cinnamon.desktop $PKG/usr/share/apps/kdm/sessions/
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
-cp -a AUTHORS COPYING INSTALL README* $PKG/usr/doc/$PRGNAM-$VERSION
+cp -a AUTHORS COPYING README* $PKG/usr/doc/$PRGNAM-$VERSION
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 find $PKG/usr/doc/$PRGNAM-$VERSION/ -type f -exec chmod 644 {} \;
 chown -R root:root $PKG/usr/doc/$PRGNAM-$VERSION
