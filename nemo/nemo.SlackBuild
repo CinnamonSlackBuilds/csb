@@ -71,24 +71,23 @@ find -L . \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
-CFLAGS="$SLKCFLAGS" \
-CXXFLAGS="$SLKCFLAGS" \
-./autogen.sh \
+sed -i "s| exempi,||g" src/meson.build
+mkdir -p build
+cd build
+meson setup \
   --prefix=/usr \
-  --libdir=/usr/lib${LIBDIRSUFFIX} \
-  --sysconfdir=/etc \
-  --localstatedir=/var \
+  --buildtype=release \
+  --libdir=lib${LIBDIRSUFFIX} \
+  --libexecdir=/usr/lib${LIBDIRSUFFIX} \
   --mandir=/usr/man \
-  --docdir=/usr/doc/$PRGNAM-$VERSION \
-  --enable-introspection=yes \
-  --enable-tracker=no \
-  --disable-update-mimedb \
-  --disable-schemas-compile \
-  --disable-selinux \
-  --build=$ARCH-slackware-linux
+  -Dselinux=false \
+  -Denable-tracker=false \
+  -Dxmp=false \
+  ..
 
-make
-make install DESTDIR=$PKG
+  ninja
+  DESTDIR=$PKG ninja install
+cd ..
 
 # Don't ship .la files:
 rm -f $PKG/{,usr/}lib${LIBDIRSUFFIX}/*.la
