@@ -13,9 +13,10 @@ accountsservice
 cinnamon-desktop
 json-glib
 pangox-compat
-cinnamon-session
 libgnomekbd
 xapps
+cinnamon-session
+libgusb \
 libgusb
 colord
 libgtop

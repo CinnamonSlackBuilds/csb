@@ -57,9 +57,9 @@ for dir in \
   cinnamon-desktop \
   json-glib \
   pangox-compat \
+  libgnomekbd \
   xapps \
   cinnamon-session \
-  libgnomekbd \
   libgusb \
   colord \
   libgtop \
