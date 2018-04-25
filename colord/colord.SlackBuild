@@ -95,15 +95,15 @@ meson --prefix=/usr \
       --libdir=lib${LIBDIRSUFFIX} \
       --libexecdir=/usr/lib${LIBDIRSUFFIX}/colord \
       --mandir=/usr/man \
-      -Denable-libcolordcompat=true \
-      -Denable-sane=true \
-      -Denable-vala=true \
-      -Denable-systemd=false \
-      -Denable-argyllcms-sensor=false \
-      -Denable-print-profiles=false \
-      -Denable-tests=false \
-      -Denable-bash-completion=${USE_BASH} \
-      -Dwith-daemon-user=colord \
+      -Dlibcolordcompat=true \
+      -Dsane=true \
+      -Dvapi=true \
+      -Dsystemd=false \
+      -Dargyllcms_sensor=false \
+      -Dprint_profiles=false \
+      -Dtests=false \
+      -Dbash_completion=${USE_BASH} \
+      -Ddaemon_user=colord \
       ../
 ninja
 DESTDIR=$PKG ninja install
