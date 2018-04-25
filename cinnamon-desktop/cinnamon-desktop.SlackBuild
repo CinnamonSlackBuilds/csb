@@ -74,23 +74,20 @@ find -L . \
 # Use ConsoleKit instead of logind
 sed -i "s|<default>true</default>|<default>false</default>|g" schemas/org.cinnamon.desktop.session.gschema.xml.in.in
 
-CFLAGS="$SLKCFLAGS" \
-CXXFLAGS="$SLKCFLAGS" \
-./autogen.sh \
+mkdir -p build
+cd build
+meson setup \
   --prefix=/usr \
-  --libdir=/usr/lib${LIBDIRSUFFIX} \
-  --sysconfdir=/etc \
-  --localstatedir=/var \
+  --buildtype=release \
+  --libdir=lib${LIBDIRSUFFIX} \
+  --libexecdir=/usr/lib${LIBDIRSUFFIX} \
   --mandir=/usr/man \
-  --docdir=/usr/doc/$PRGNAM-$VERSION \
-  --enable-introspection=yes \
-  --build=$ARCH-slackware-linux
+  -Ddocs=true \
+  ..
 
-sed -i "s|include \$(libgsystem_srcpath)\/\$(DEPDIR)/libgsystem_la-gsystem-file-utils.Plo||" libcinnamon-desktop/Makefile
-sed -i "s|include \$(libgsystem_srcpath)\/\$(DEPDIR)/libgsystem_la-gsystem-local-alloc.Plo||" libcinnamon-desktop/Makefile
-
-make
-make install DESTDIR=$PKG
+  ninja
+  DESTDIR=$PKG ninja install
+cd ..
 
 # Don't ship .la files:
 rm -f $PKG/{,usr/}lib${LIBDIRSUFFIX}/*.la
