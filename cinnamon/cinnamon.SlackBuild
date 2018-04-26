@@ -100,6 +100,8 @@ sed -i 's/"stock_calendar"/"x-office-calendar"/' files/usr/share/cinnamon/deskle
 # Remove broken symlink
 rm files/etc/xdg/menus/cinnamon-applications-merged
 
+patch -p1 < $CWD/7382.patch
+
 CFLAGS="$SLKCFLAGS" \
 CXXFLAGS="$SLKCFLAGS" \
 ./autogen.sh \
@@ -112,6 +114,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --enable-introspection=yes \
   --enable-compile-warnings=no \
   --disable-schemas-compile \
+  --disable-gtk-doc \
   --build=$ARCH-slackware-linux
 
 make
