@@ -23,8 +23,9 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=python-pam
-VERSION=${VERSION:-0.1.4}
-BUILD=${BUILD:-2}
+VERSION=${VERSION:-1.8.3}
+COMMITVER=7f71db2c4e63e317cb607cd5353b4ec176d7a137
+BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
 if [ -z "$ARCH" ]; then
@@ -35,7 +36,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c https://pypi.python.org/packages/source/p/pam/pam-$VERSION.tar.gz
+wget -c https://github.com/FirefighterBlu3/python-pam/archive/$COMMITVER/python-pam-$COMMITVER.zip
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/csb}
@@ -56,17 +57,16 @@ else
   LIBDIRSUFFIX=""
 fi
 
-DOCS="PKG-INFO"
+DOCS="ChangeLog LICENSE README*"
 
 set -e
 
 rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
-rm -rf pam-$VERSION
-tar xvf $CWD/pam-$VERSION.tar.gz
-cd pam-$VERSION
-
+rm -rf python-pam-$COMMITVER
+unzip $CWD/$PRGNAM-$COMMITVER.zip
+cd python-pam-$COMMITVER
 chown -R root:root .
 find -L . \
  \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
