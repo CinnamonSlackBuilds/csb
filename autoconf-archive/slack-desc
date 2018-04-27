@@ -5,7 +5,7 @@ autoconf-archive: autoconf-archive contains collection of freely re-usable Autoc
 autoconf-archive: macros
 autoconf-archive:
 autoconf-archive:
-autoconf-archive: Project URL: http://www.gnu.org/software/autoconf-archive/
+autoconf-archive: Project URL: https://www.gnu.org/software/autoconf-archive/
 autoconf-archive:
 autoconf-archive:
 autoconf-archive:

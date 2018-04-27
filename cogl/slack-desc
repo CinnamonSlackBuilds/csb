@@ -8,5 +8,5 @@ cogl: The API departs from the flat state machine style of OpenGL and is
 cogl: designed to make it easy to write orthogonal components that can
 cogl: render without stepping on each others toes.
 cogl:
-cogl: Project URL: http://www.clutter-project.org/
+cogl: Project URL: https://github.com/GNOME/cogl/
 cogl:

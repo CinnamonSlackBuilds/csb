@@ -8,5 +8,5 @@ psutil: functionalities offered by command line tools such as: ps, top, df,
 psutil: kill, free, lsof, netstat, ifconfig, nice, ionice, iostat, iotop,
 psutil: uptime, pidof, tty, who, taskset, and pmap
 psutil:
-psutil: Homepage: http://code.google.com/p/psutil/
+psutil: Homepage: https://github.com/giampaolo/psutil
 psutil:

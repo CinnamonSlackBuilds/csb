@@ -8,5 +8,5 @@ clutter: Clutter uses OpenGL for rendering, but wraps an easy to use,
 clutter: efficient, flexible API around GL complexity.
 clutter:
 clutter:
-clutter: Project URL: http://www.clutter-project.org/
+clutter: Project URL: https://github.com/GNOME/clutter
 clutter:

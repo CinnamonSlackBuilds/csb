@@ -5,7 +5,7 @@ accountsservice: AccountsService is a D-Bus service for accessing the list of us
 accountsservice: accounts and information attached to those accounts. 
 accountsservice:
 accountsservice: Project URL:
-accountsservice: http://www.freedesktop.org/wiki/Software/AccountsService/
+accountsservice: https://www.freedesktop.org/wiki/Software/AccountsService/
 accountsservice:
 accountsservice:
 accountsservice:

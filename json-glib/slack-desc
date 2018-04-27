@@ -12,7 +12,7 @@ json-glib: JSON-GLib is a library providing serialization and deserialization
 json-glib: support for the JavaScript Object Notation (JSON) format described
 json-glib: by RFC 4627.
 json-glib:
-json-glib: Homepage: http://live.gnome.org/JsonGlib
+json-glib: Homepage: https://wiki.gnome.org/action/show/Projects/JsonGlib
 json-glib:
 json-glib:
 json-glib:
