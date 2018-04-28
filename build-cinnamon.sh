@@ -47,7 +47,6 @@ for dir in \
   setproctitle \
   ptyprocess \
   autoconf-archive \
-  gnome-common \
   mozjs \
   cjs \
   cracklib \
