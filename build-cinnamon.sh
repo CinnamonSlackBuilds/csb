@@ -80,7 +80,6 @@ for dir in \
   BeautifulSoup \
   lxml \
   metacity \
-  alacarte \
   polib \
   cinnamon-translations \
   nemo \
