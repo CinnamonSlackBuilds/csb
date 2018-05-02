@@ -15,7 +15,6 @@ pangox-compat
 libgnomekbd
 xapps
 cinnamon-session
-libgusb \
 libgusb
 colord
 libgtop
