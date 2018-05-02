@@ -54,7 +54,6 @@ for dir in \
   python-pam \
   accountsservice \
   cinnamon-desktop \
-  json-glib \
   pangox-compat \
   libgnomekbd \
   xapps \
