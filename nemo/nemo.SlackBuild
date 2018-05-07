@@ -23,7 +23,7 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=nemo
-VERSION=${VERSION:-3.8.1}
+VERSION=${VERSION:-3.8.2}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
@@ -71,7 +71,6 @@ find -L . \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
-sed -i "s| exempi,||g" src/meson.build
 mkdir -p build
 cd build
 meson setup \
@@ -81,7 +80,7 @@ meson setup \
   --libexecdir=/usr/lib${LIBDIRSUFFIX} \
   --mandir=/usr/man \
   -Dselinux=false \
-  -Denable-tracker=false \
+  -Dtracker=false \
   -Dxmp=false \
   ..
 
