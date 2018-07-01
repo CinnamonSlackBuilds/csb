@@ -74,9 +74,6 @@ find -L . \
 # Use cinnamon theme by default
 patch -p1 < $CWD/default-theme.patch
 
-# Fix segfault on first login
-patch -R -p1 < $CWD/fa9a5c78bfbb6c15b126bf1d79f7d816fecb7b36.patch
-
 # Fix selected background color in Cinnamon Settings for Adwaita theme
 sed -i 's/@selected_bg_color;/@theme_selected_bg_color;/' \
     files/usr/share/cinnamon/cinnamon-settings/cinnamon-settings.py
