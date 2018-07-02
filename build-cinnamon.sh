@@ -61,8 +61,6 @@ for dir in \
   libgusb \
   colord \
   libgtop \
-  libgksu \
-  gksu \
   cinnamon-settings-daemon \
   gnome-menus \
   krb5 \
