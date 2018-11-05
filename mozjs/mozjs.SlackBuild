@@ -23,7 +23,7 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=mozjs
-VERSION=${VERSION:-52.7.3}
+VERSION=${VERSION:-52.9.0}
 SRCNAM=firefox-${VERSION}esr.source
 DIRNAM=firefox-${VERSION}
 BUILD=${BUILD:-1}
@@ -37,7 +37,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c https://ftp.mozilla.org/pub/firefox/releases/52.7.3esr/source/firefox-52.7.3esr.source.tar.xz
+wget -c https://ftp.mozilla.org/pub/firefox/releases/52.9.0esr/source/firefox-52.9.0esr.source.tar.xz
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/csb}
