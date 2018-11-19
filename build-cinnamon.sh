@@ -48,7 +48,6 @@ for dir in \
   setproctitle \
   ptyprocess \
   autoconf-archive \
-  mozjs \
   cjs \
   cracklib \
   pam \
