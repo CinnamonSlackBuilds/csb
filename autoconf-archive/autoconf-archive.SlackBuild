@@ -23,7 +23,7 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=autoconf-archive
-VERSION=${VERSION:-2017.09.28}
+VERSION=${VERSION:-2018.03.13}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
@@ -35,7 +35,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c http://gnu.uberglobalmirror.com/autoconf-archive/$PRGNAM-$VERSION.tar.xz
+wget -c http://ftp.wayne.edu/gnu/autoconf-archive/$PRGNAM-$VERSION.tar.xz
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/csb}
@@ -70,6 +70,12 @@ find -L . \
   -o -perm 511 \) -exec chmod 755 {} \; -o \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+
+# respect --docdir properly
+# http://git.savannah.nongnu.org/cgit/autoconf-archive.git/commit/?id=ad15d52fd1e552bc3d7fcfb3d7bc6a2681f364d8
+patch -p0 < $CWD/docdir.patch
+
+autoreconf -fiv
 
 CFLAGS="$SLKCFLAGS" \
 CXXFLAGS="$SLKCFLAGS" \
