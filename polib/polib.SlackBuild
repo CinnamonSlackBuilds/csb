@@ -82,7 +82,7 @@ cat $CWD/slack-desc > $PKG/install/slack-desc
 
 # Don't fail if sphinx not installed
 if [ -x /usr/bin/sphinx-build ] ; then
-    (   cd $TMP/$PRGNAM-$VERSION/doc
+    (   cd $TMP/$PRGNAM-$VERSION/docs
         make html
         make pickle
         make json
