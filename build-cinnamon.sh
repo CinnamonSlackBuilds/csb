@@ -86,6 +86,8 @@ for dir in \
   cinnamon-themes \
   mint-y-theme \
   mint-y-icons \
+  rubygem-sass \
+  mint-themes \
   cinnamon \
   pia-manager \
   ; do
