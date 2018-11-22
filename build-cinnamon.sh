@@ -44,7 +44,6 @@ CHECKDUPLICATE=0
 for dir in \
   libxkbcommon \
   graphviz \
-  vala \
   setproctitle \
   ptyprocess \
   autoconf-archive \

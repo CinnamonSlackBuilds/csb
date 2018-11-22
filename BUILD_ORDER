@@ -1,6 +1,5 @@
 libxkbcommon
 graphviz
-vala
 setproctitle
 ptyprocess
 autoconf-archive
