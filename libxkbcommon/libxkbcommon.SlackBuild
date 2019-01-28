@@ -27,7 +27,7 @@
 
 PRGNAM=libxkbcommon
 VERSION=${VERSION:-0.8.2}
-BUILD=${BUILD:-1}
+BUILD=${BUILD:-2}
 TAG=${TAG:-_csb}
 
 if [ -z "$ARCH" ]; then
@@ -74,20 +74,27 @@ find -L . \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
-CFLAGS="$SLKCFLAGS" \
-CXXFLAGS="$SLKCFLAGS" \
-./configure \
-  --prefix=/usr \
-  --libdir=/usr/lib${LIBDIRSUFFIX} \
-  --sysconfdir=/etc \
-  --localstatedir=/var \
-  --mandir=/usr/man \
-  --docdir=/usr/doc/$PRGNAM-$VERSION \
-  --build=$ARCH-slackware-linux \
-  --disable-static
+# Comment these two lines in order to build
+sed -i "s|executable('fuzz-keymap'|\#executable('fuzz-keymap'|g" meson.build
+sed -i "s|executable('fuzz-compose'|\#executable('fuzz-compose'|g" meson.build
 
-make
-make install-strip DESTDIR=$PKG
+mkdir -p build
+cd build
+meson setup \
+  --prefix=/usr \
+  --buildtype=release \
+  --libdir=lib${LIBDIRSUFFIX} \
+  --libexecdir=/usr/lib${LIBDIRSUFFIX} \
+  --mandir=/usr/man \
+  -Denable-wayland=false \
+  -Denable-docs=false \
+  -Denable-x11=true \
+  -Ddefault_library=shared \
+  ..
+
+  ninja
+  DESTDIR=$PKG ninja install
+cd ..
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
 cp -a LICENSE README.md NEWS PACKAGING $PKG/usr/doc/$PRGNAM-$VERSION
