@@ -45,8 +45,8 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c https://github.com/cracklib/cracklib/releases/download/$PRGNAM-$VERSION/$PRGNAM-$VERSION.tar.gz
-wget -c https://github.com/cracklib/cracklib/releases/download/$PRGNAM-$VERSION/$PRGNAM-words-$VERSION.gz
+wget -c https://ftp.osuosl.org/pub/blfs/conglomeration/$PRGNAM/$PRGNAM-$VERSION.tar.gz
+wget -c https://ftp.osuosl.org/pub/blfs/conglomeration/$PRGNAM/$PRGNAM-words-$VERSION.gz
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/csb}
