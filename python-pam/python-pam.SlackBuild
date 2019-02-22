@@ -2,7 +2,7 @@
 
 # Slackware build script for python-pam
 #
-# Copyright 2014 Willy Sudiarto Raharjo <willysr@slackware-id.org>
+# Copyright 2014-2019 Willy Sudiarto Raharjo <willysr@slackware-id.org>
 # All rights reserved.
 #
 # Redistribution and use of this script, with or without modification, is
@@ -25,7 +25,7 @@
 PRGNAM=python-pam
 VERSION=${VERSION:-1.8.4}
 COMMITVER=8d0e14a53adaeb08d27214976b5ac50adc9146bf
-BUILD=${BUILD:-1}
+BUILD=${BUILD:-2}
 TAG=${TAG:-_csb}
 
 if [ -z "$ARCH" ]; then
