@@ -72,6 +72,7 @@ for dir in \
   libgee \
   caribou \
   pexpect \
+  python-soupsieve \
   BeautifulSoup \
   lxml \
   metacity \
