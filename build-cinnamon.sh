@@ -72,7 +72,6 @@ for dir in \
   libgee \
   caribou \
   pexpect \
-  python-soupsieve \
   metacity \
   polib \
   cinnamon-translations \
