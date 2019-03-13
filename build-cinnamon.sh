@@ -74,7 +74,6 @@ for dir in \
   pexpect \
   python-soupsieve \
   BeautifulSoup \
-  lxml \
   metacity \
   polib \
   cinnamon-translations \

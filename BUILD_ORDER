@@ -30,7 +30,6 @@ caribou
 pexpect
 python-soupsieve
 BeautifulSoup
-lxml
 metacity
 polib
 cinnamon-translations
