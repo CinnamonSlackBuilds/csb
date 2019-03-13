@@ -73,7 +73,6 @@ for dir in \
   caribou \
   pexpect \
   python-soupsieve \
-  BeautifulSoup \
   metacity \
   polib \
   cinnamon-translations \
