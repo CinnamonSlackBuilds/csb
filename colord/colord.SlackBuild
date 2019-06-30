@@ -2,7 +2,7 @@
 
 # Slackware build script for colord
 
-# Copyright 2014-2018 Willy Sudiarto Raharjo <willysr@slackware-id.org>
+# Copyright 2014-2019 Willy Sudiarto Raharjo <willysr@slackware-id.org>
 # All rights reserved.
 #
 # Redistribution and use of this script, with or without modification, is
@@ -23,7 +23,7 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=colord
-VERSION=${VERSION:-1.4.3}
+VERSION=${VERSION:-1.4.4}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
@@ -104,6 +104,7 @@ meson --prefix=/usr \
       -Dtests=false \
       -Dbash_completion=${USE_BASH} \
       -Ddaemon_user=colord \
+      -Dman=false \
       ../
 ninja
 DESTDIR=$PKG ninja install
@@ -111,9 +112,6 @@ cd ..
 
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
-
-find $PKG/usr/man -type f -exec gzip -9 {} \;
-for i in $( find $PKG/usr/man -type l ) ; do ln -s $( readlink $i ).gz $i.gz ; rm $i ; done
 
 # Fix paths
 sed -i "s|/lib|/lib${LIBDIRSUFFIX}|g" $PKG/usr/lib${LIBDIRSUFFIX}/pkgconfig/colord.pc
