@@ -71,7 +71,7 @@ find -L . \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
-sed -i "s|UpDeviceLevel battery_level|UpDeviceClass battery_level|g" plugins/power/csd-power-manager.c
+sed -i "s|UpDeviceLevel battery_level|gint battery_level|g" plugins/power/csd-power-manager.c
 patch -p1 < $CWD/a3b1e3af333c34d19e288cd77a208440f0fe6820.patch
 
 CFLAGS="$SLKCFLAGS" \
