@@ -23,8 +23,8 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=cinnamon
-VERSION=${VERSION:-4.0.10}
-BUILD=${BUILD:-2}
+VERSION=${VERSION:-4.2.0}
+BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
 if [ -z "$ARCH" ]; then
@@ -81,7 +81,6 @@ patch -p1 < $CWD/logo.patch
 rm files/etc/xdg/menus/cinnamon-applications-merged
 
 patch -p1 < $CWD/7382.patch
-patch -p1 < $CWD/pil.patch
 
 CFLAGS="$SLKCFLAGS" \
 CXXFLAGS="$SLKCFLAGS" \
