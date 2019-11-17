@@ -26,8 +26,8 @@
 # Modified by Willy Sudiarto Raharjo for CSB Project
 
 PRGNAM=libgtop
-VERSION=${VERSION:-2.38.0}
-BUILD=${BUILD:-2}
+VERSION=${VERSION:-2.40.0}
+BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
 if [ -z "$ARCH" ]; then
@@ -38,7 +38,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c http://ftp.acc.umu.se/pub/GNOME/sources/libgtop/2.38/$PRGNAM-$VERSION.tar.xz
+wget -c https://ftp.acc.umu.se/pub/GNOME/sources/libgtop/2.40/$PRGNAM-$VERSION.tar.xz
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/csb}

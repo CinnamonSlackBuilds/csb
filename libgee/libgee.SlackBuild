@@ -7,7 +7,7 @@
 # Modified by Willy Sudiarto Raharjo for CSB Project
 
 PRGNAM=libgee
-VERSION=${VERSION:-0.20.1}
+VERSION=${VERSION:-0.20.2}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
@@ -19,7 +19,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c http://ftp.acc.umu.se/pub/gnome/sources/$PRGNAM/0.20/$PRGNAM-$VERSION.tar.xz
+wget -c https://ftp.acc.umu.se/pub/gnome/sources/$PRGNAM/0.20/$PRGNAM-$VERSION.tar.xz
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/csb}

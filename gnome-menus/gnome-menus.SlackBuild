@@ -23,8 +23,8 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=gnome-menus
-VERSION=${VERSION:-3.13.3}
-BUILD=${BUILD:-2}
+VERSION=${VERSION:-3.32.0}
+BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
 if [ -z "$ARCH" ]; then
@@ -35,7 +35,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c http://ftp.acc.umu.se/pub/gnome/sources/gnome-menus/3.13/$PRGNAM-$VERSION.tar.xz
+wget -c https://ftp.acc.umu.se/pub/gnome/sources/gnome-menus/3.32/$PRGNAM-$VERSION.tar.xz
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/csb}
