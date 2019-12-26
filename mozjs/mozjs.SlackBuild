@@ -92,6 +92,7 @@ patch -p1 < $CWD/mozjs52-fix-soname.patch
 patch -p1 < $CWD/mozjs52-copy-headers.patch
 patch -p1 < $CWD/mozjs52-disable-mozglue.patch
 patch -Np1 < $CWD/mozjs52-include-configure-script.patch
+patch -p1 < $CWD/no-error.diff
 touch js/src/configure
 
 cd js/src
