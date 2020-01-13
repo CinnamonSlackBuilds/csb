@@ -71,6 +71,9 @@ find -L . \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
+# Patch to fix platform.linux_distribution with python 3.8
+patch -p1 < $CWD/python_3.8_platform.patch
+
 # Use cinnamon theme by default
 patch -p1 < $CWD/default-theme.patch
 
