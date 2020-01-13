@@ -1,0 +1,20 @@
+--- a/files/usr/share/cinnamon/cinnamon-settings/modules/cs_info.py
++++ b/files/usr/share/cinnamon/cinnamon-settings/modules/cs_info.py
+@@ -1,6 +1,7 @@
+ #!/usr/bin/python3
+ 
+ import platform
++import distro
+ import subprocess
+ import shlex
+ import os
+@@ -105,7 +106,7 @@
+         title = ' '.join(contents[:2]) or "Manjaro Linux"
+         infos.append((_("Operating System"), title))
+     else:
+-        s = '%s (%s)' % (' '.join(platform.linux_distribution()), arch)
++        s = '%s (%s)' % (' '.join(distro.linux_distribution()), arch)
+         # Normalize spacing in distribution name
+         s = re.sub('\s{2,}', ' ', s)
+         infos.append((_("Operating System"), s))
+
