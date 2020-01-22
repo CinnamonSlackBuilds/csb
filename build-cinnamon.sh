@@ -52,7 +52,6 @@ for dir in \
   mozjs \
   cjs \
   cracklib \
-  pam \
   python-pam \
   accountsservice \
   cinnamon-desktop \
