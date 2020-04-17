@@ -63,7 +63,6 @@ for dir in \
   libgtop \
   cinnamon-settings-daemon \
   gnome-menus \
-  krb5 \
   cinnamon-menus \
   cinnamon-control-center \
   zenity \
