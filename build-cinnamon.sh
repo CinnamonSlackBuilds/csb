@@ -77,7 +77,7 @@ for dir in \
   polib \
   cinnamon-translations \
   nemo \
-  python-xapp \
+  python3-xapp \
   psutil \
   cinnamon-screensaver \
   mint-y-theme \
