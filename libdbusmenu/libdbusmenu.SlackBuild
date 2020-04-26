@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Slackware build script for python3-xapp
+# Slackware build script for libdbusmenu
 
 # Copyright 2020 Willy Sudiarto Raharjo <willysr@slackware-id.org>
 # All rights reserved.
@@ -22,8 +22,8 @@
 #  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-PRGNAM=python3-xapp
-VERSION=${VERSION:-2.0.1}
+PRGNAM=libdbusmenu
+VERSION=${VERSION:-16.04.0}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
@@ -35,7 +35,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c https://github.com/linuxmint/python3-xapp/archive/$VERSION/$PRGNAM-$VERSION.tar.gz
+wget -c https://launchpad.net/libdbusmenu/16.04/16.04.0/+download/libdbusmenu-16.04.0.tar.gz
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/csb}
@@ -71,13 +71,31 @@ find -L . \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
-python3 setup.py install --root=$PKG
+sed -i 's/-Werror//' libdbusmenu-*/Makefile.{am,in}
+export HAVE_VALGRIND_TRUE='#'
+export HAVE_VALGRIND_FALSE=''
+
+CFLAGS="$SLKCFLAGS" \
+CXXFLAGS="$SLKCFLAGS" \
+./configure \
+  --prefix=/usr \
+  --libdir=/usr/lib${LIBDIRSUFFIX} \
+  --sysconfdir=/etc \
+  --localstatedir=/var \
+  --mandir=/usr/man \
+  --docdir=/usr/doc/$PRGNAM-$VERSION \
+  --disable-{dumper,static,tests} \
+  --with-gtk=3 \
+  --build=$ARCH-slackware-linux
+
+make
+make install DESTDIR=$PKG
 
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
-cp -a COPYING $PKG/usr/doc/$PRGNAM-$VERSION
+cp -a AUTHORS COPYING* INSTALL NEWS README $PKG/usr/doc/$PRGNAM-$VERSION
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 find $PKG/usr/doc/$PRGNAM-$VERSION/ -type f -exec chmod 644 {} \;
 chown -R root:root $PKG/usr/doc/$PRGNAM-$VERSION
