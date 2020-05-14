@@ -83,7 +83,7 @@ cd build
     --mandir=/usr/man \
     --prefix=/usr \
     --sysconfdir=/etc \
-    -Dlocking=true \
+    -Dlocking=true
   ninja
   DESTDIR=$PKG ninja install
 cd ..
