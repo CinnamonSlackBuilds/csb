@@ -52,6 +52,7 @@ for dir in \
   autoconf-archive \
   mozjs \
   cjs \
+  cracklib \
   python-pam \
   accountsservice \
   cinnamon-desktop \
