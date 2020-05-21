@@ -46,7 +46,6 @@ for dir in \
   pytz \
   libtimezonemap \
   tinycss \
-  libxkbcommon \
   setproctitle \
   ptyprocess \
   autoconf-archive \

@@ -2,7 +2,6 @@ libdbusmenu
 pytz
 libtimezonemap
 tinycss
-libxkbcommon
 setproctitle
 ptyprocess
 autoconf-archive
@@ -20,7 +19,6 @@ colord
 libgtop
 cinnamon-settings-daemon
 gnome-menus
-krb5
 cinnamon-menus
 cinnamon-control-center
 zenity
