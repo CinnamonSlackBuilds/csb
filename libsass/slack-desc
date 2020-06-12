@@ -1,0 +1,12 @@
+       |-----handy-ruler------------------------------------------------------|
+libsass: libsass (Sass compiler written in C++)
+libsass:
+libsass: LibSass is the library of the C/C++ port of the Sass engine.
+libsass:
+libsass: LibSass is just a library! If you want to use LibSass to compile Sass,
+libsass: you need an implementer. SassC, which is the official lightweight CLI
+libsass: tool built by the same people as LibSass, is available on Slackbuilds
+libsass: as sassc.
+libsass:
+libsass:
+libsass:
