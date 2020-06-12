@@ -80,9 +80,9 @@ for dir in \
   python3-xapp \
   psutil \
   cinnamon-screensaver \
-  mint-y-theme \
   mint-y-icons \
-  rubygem-sass \
+  libsass \
+  sassc \
   mint-themes \
   cinnamon \
   pia-manager \

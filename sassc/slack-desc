@@ -1,0 +1,12 @@
+     |-----handy-ruler------------------------------------------------------|
+sassc: sassc (C/C++ port of the Sass CSS precompiler)
+sassc:
+sassc: SassC is a wrapper around libsass (http://github.com/sass/libsass)
+sassc: used to generate a useful command-line application that can be
+sassc: installed and packaged for several operating systems.
+sassc:
+sassc: Sass is a CSS pre-processor language to add on exciting, new, awesome
+sassc: features to CSS. Sass was the first language of its kind and by far
+sassc: the most mature and up to date codebase.
+sassc:
+sassc: http://sass-lang.com
