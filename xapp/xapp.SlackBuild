@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Slackware build script for xapps
+# Slackware build script for xapp
 
 # Copyright 2016-2020 Willy Sudiarto Raharjo <willysr@slackware-id.org>
 # All rights reserved.
@@ -22,8 +22,8 @@
 #  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-PRGNAM=xapps
-VERSION=${VERSION:-1.8.8}
+PRGNAM=xapp
+VERSION=${VERSION:-1.8.9}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
@@ -35,7 +35,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c https://github.com/linuxmint/xapps/archive/$VERSION/$PRGNAM-$VERSION.tar.gz
+wget -c https://github.com/linuxmint/xapp/archive/$VERSION/$PRGNAM-$VERSION.tar.gz
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/csb}

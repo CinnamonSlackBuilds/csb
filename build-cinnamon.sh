@@ -56,7 +56,7 @@ for dir in \
   cinnamon-desktop \
   pangox-compat \
   libgnomekbd \
-  xapps \
+  xapp \
   cinnamon-session \
   libgusb \
   colord \
