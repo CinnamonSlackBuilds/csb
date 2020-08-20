@@ -1,0 +1,12 @@
+        |-----handy-ruler------------------------------------------------------|
+libcroco: libcroco (CSS2 parsing and manipulation library)
+libcroco:
+libcroco: Libcroco is a standalone CSS2 parsing and manipulation library.
+libcroco: The parser provides a low level event driven SAC like API and a CSS
+libcroco: object model like API.
+libcroco:
+libcroco: Libcroco provides a CSS2 selection engine and an experimental
+libcroco: XML/CSS rendering engine.
+libcroco:
+libcroco:
+libcroco:
