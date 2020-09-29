@@ -49,7 +49,6 @@ for dir in \
   tinycss \
   setproctitle \
   ptyprocess \
-  autoconf-archive \
   mozjs \
   cjs \
   python-pam \
