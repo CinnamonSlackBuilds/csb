@@ -25,7 +25,7 @@
 PRGNAM=python-pam
 VERSION=${VERSION:-1.8.4}
 COMMITVER=8d0e14a53adaeb08d27214976b5ac50adc9146bf
-BUILD=${BUILD:-3}
+BUILD=${BUILD:-4}
 TAG=${TAG:-_csb}
 
 if [ -z "$ARCH" ]; then
