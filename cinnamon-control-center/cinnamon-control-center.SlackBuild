@@ -91,10 +91,6 @@ cd build
   DESTDIR=$PKG ninja install
 cd ..
 
-
-make
-make install DESTDIR=$PKG
-
 # Don't ship .la files:
 rm -f $PKG/{,usr/}lib${LIBDIRSUFFIX}/*.la
 
