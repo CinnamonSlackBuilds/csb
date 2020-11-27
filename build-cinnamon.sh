@@ -81,8 +81,6 @@ for dir in \
   psutil \
   cinnamon-screensaver \
   mint-y-icons \
-  libsass \
-  sassc \
   mint-themes \
   cinnamon \
   pia-manager \
