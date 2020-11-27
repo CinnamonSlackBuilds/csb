@@ -49,7 +49,6 @@ for dir in \
   tinycss \
   setproctitle \
   ptyprocess \
-  mozjs \
   cjs \
   python-pam \
   accountsservice \
