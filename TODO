@@ -1,0 +1,3 @@
+1. Build accountsservice with elogind
+2. Rebuild cinnamon-control-center and cinnamon-settings-daemon
+3. Fix caribou (or remove it?)
