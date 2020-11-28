@@ -86,8 +86,8 @@ cd build
     --mandir=/usr/man \
     --prefix=/usr \
     --sysconfdir=/etc \
-    -Duse_polkit=enabled \
-    -Duse_logind=disabled
+    -Duse_polkit=disabled \
+    -Duse_logind=enabled
   ninja
   DESTDIR=$PKG ninja install
 cd ..
