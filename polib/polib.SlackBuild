@@ -46,6 +46,9 @@ if [ "$ARCH" = "i586" ]; then
   LIBDIRSUFFIX=""
 elif [ "$ARCH" = "i686" ]; then
   LIBDIRSUFFIX=""
+elif [ "$ARCH" = "aarch64" ]; then
+  SLKCFLAGS="-O2"
+  LIBDIRSUFFIX="64"
 elif [ "$ARCH" = "x86_64" ]; then
   LIBDIRSUFFIX="64"
 else
