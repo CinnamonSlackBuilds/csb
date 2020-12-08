@@ -51,7 +51,6 @@ for dir in \
   ptyprocess \
   cjs \
   python-pam \
-  accountsservice \
   cinnamon-desktop \
   pangox-compat \
   libgnomekbd \
