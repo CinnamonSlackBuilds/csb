@@ -86,7 +86,7 @@ cd build
     --mandir=/usr/man \
     --prefix=/usr \
     --sysconfdir=/etc \
-    -Donlineaccounts=true
+    -Donlineaccounts=false
   ninja
   DESTDIR=$PKG ninja install
 cd ..
