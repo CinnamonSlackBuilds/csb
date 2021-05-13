@@ -24,7 +24,7 @@
 
 PRGNAM=caribou
 VERSION=${VERSION:-0.4.21}
-BUILD=${BUILD:-3}
+BUILD=${BUILD:-4}
 TAG=${TAG:-_csb}
 
 if [ -z "$ARCH" ]; then
