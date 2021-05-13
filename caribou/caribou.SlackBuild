@@ -35,7 +35,8 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c https://ftp.acc.umu.se/pub/GNOME/sources/caribou/0.4/$PRGNAM-$VERSION.tar.xz
+#wget -c https://ftp.acc.umu.se/pub/GNOME/sources/caribou/0.4/$PRGNAM-$VERSION.tar.xz
+wget -c https://gitlab.gnome.org/GNOME/caribou/-/archive/master/caribou-master.tar.gz
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/csb}
@@ -73,9 +74,6 @@ find -L . \
   -o -perm 511 \) -exec chmod 755 {} \; -o \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
-
-patch -p1 < $CWD/3.patch
-patch -p1 < $CWD/unicode_to_keyval-symbol-check.patch
 
 PYTHON="/usr/bin/python3" \
 CFLAGS="$SLKCFLAGS" \
