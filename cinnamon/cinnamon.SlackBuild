@@ -23,7 +23,7 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=cinnamon
-VERSION=${VERSION:-4.8.5}
+VERSION=${VERSION:-5.0.1}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
@@ -76,8 +76,6 @@ find -L . \
 
 # Patch to use Slackware Logo, thanks to Skaendo
 patch -p1 < $CWD/logo.patch
-
-patch -p1 < $CWD/7382.patch
 
 mkdir build
 cd build
