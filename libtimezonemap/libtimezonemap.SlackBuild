@@ -23,7 +23,7 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=libtimezonemap
-VERSION=${VERSION:-0.4.1}
+VERSION=${VERSION:-0.4.6}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
@@ -35,7 +35,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c https://launchpad.net/ubuntu/+archive/primary/+files/libtimezonemap_0.4.1.tar.gz
+wget -c https://launchpad.net/ubuntu/+archive/primary/+files/libtimezonemap_0.4.6.tar.gz
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/csb}
