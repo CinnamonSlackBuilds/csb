@@ -25,8 +25,8 @@
 # Modified by Willy Sudiarto Raharjo for CSB Project
 
 PRGNAM=setproctitle
-VERSION=${VERSION:-1.1.10}
-BUILD=${BUILD:-5}
+VERSION=${VERSION:-1.2.2}
+BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
 if [ -z "$ARCH" ]; then
@@ -37,7 +37,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c https://pypi.python.org/packages/5a/0d/dc0d2234aacba6cf1a729964383e3452c52096dc695581248b548786f2b3/setproctitle-1.1.10.tar.gz
+wget -c https://files.pythonhosted.org/packages/a1/7f/a1d4f4c7b66f0fc02f35dc5c85f45a8b4e4a7988357a29e61c14e725ef86/setproctitle-1.2.2.tar.gz
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/csb}
