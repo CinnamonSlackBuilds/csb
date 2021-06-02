@@ -58,7 +58,6 @@ for dir in \
   cinnamon-session \
   libgusb \
   colord \
-  libgtop \
   cinnamon-settings-daemon \
   gnome-menus \
   cinnamon-menus \
