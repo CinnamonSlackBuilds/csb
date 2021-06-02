@@ -38,7 +38,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c http://ftp.gnome.org/pub/gnome/sources/pangox-compat/0.0/$PRGNAM-$VERSION.tar.xz
+wget -c https://download.gnome.org/sources/pangox-compat/0.0/pangox-compat-0.0.2.tar.xz
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/csb}
