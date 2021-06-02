@@ -23,8 +23,8 @@
 # Modified by Willy Sudiarto Raharjo for CSB Project
 
 PRGNAM=polib
-VERSION=${VERSION:-1.1.0}
-BUILD=${BUILD:-4}
+VERSION=${VERSION:-1.1.1}
+BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
 if [ -z "$ARCH" ]; then
@@ -35,7 +35,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c https://files.pythonhosted.org/packages/57/61/82688564bf24ec4fa349be5ebcb4fbf49551bd1e3203c13d6196ef6b56ff/polib-1.1.0.tar.gz
+wget -c https://files.pythonhosted.org/packages/de/37/88ad2639cb4396755e87e97229d268bfa8bae0aeb6c7f9b01e9f49e10dff/polib-1.1.1.tar.gz
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/csb}
