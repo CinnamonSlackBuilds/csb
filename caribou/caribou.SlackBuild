@@ -76,6 +76,7 @@ find -L . \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
 autoreconf -fiv
+intltoolize
 PYTHON="/usr/bin/python3" \
 CFLAGS="$SLKCFLAGS" \
 CXXFLAGS="$SLKCFLAGS" \
