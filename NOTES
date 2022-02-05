@@ -1,21 +1,18 @@
 NOTES
 =====================
 
-1. I'm using the latest Slackware release as base (currently 14.2).
+1. I'm using the latest Slackware release as base (currently 15.0).
 
-2. PAM is needed to build several core packages of cinnamon. I have
-   tried to avoid this, but it seems to be inevitable.
+2. I tried to avoid systemd on this repository. So far, it worked.
 
-3. I tried to avoid systemd on this repository. So far, it worked.
-
-4. Some code in cinnamon packages are hardcoded to /usr/lib, so even
+3. Some code in cinnamon packages are hardcoded to /usr/lib, so even
    in x86_64, they will be installed in /usr/lib to avoid breakage.
 
-5. I removed webkit-related screensaver in cinnamon-screensaver to avoid
+4. I removed webkit-related screensaver in cinnamon-screensaver to avoid
    building webkitgtk which is very time consuming. It still has the
-   default screensaver that is able to lock your desktop (only requires PAM).
+   default screensaver that is able to lock your desktop.
 
-6. By default, preferred application used for opening directory is incorrectly
+5. By default, preferred application used for opening directory is incorrectly
    set to Audacious. To fix it, run the following commands
    xdg-mime default nemo.desktop inode/directory
    xdg-mime default nemo.desktop application/x-directory
