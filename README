@@ -7,9 +7,9 @@ on top of Slackware Linux.
 The Cinnamon packages are built with a minimum set of dependencies, but still
 provides a working desktop.
 
-Binary packages of Cinnamon for Slackware 14.2 for both ARCH (x86 and x86_64)
+Binary packages of Cinnamon for Slackware 15.0 for both ARCH (x86 and x86_64)
 can be obtained from : http://www.slackware.uk/csb/. Binaries are built
-against Slackware 14.2.
+against Slackware 15.0.
 
 If you have custom installation, building from the source is the recommended
 way to make sure it is linked with the libraries available on your machine.
@@ -19,7 +19,7 @@ How to build and install the CINNAMON packages using these scripts:
 1.  Clone the Git repo or download a tarball/zip of the repo.
     Master branch is recommended if you are using current and it's always tracking
     the latest release of Cinnamon project. If you are using stable version of Slackware,
-    please use a branch matching your Slackware version; eg. 14.2.
+    please use a branch matching your Slackware version; eg. 15.0.
 
 2.  You may want to read NOTES before building
 
