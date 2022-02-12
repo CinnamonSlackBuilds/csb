@@ -23,7 +23,6 @@ cogl
 clutter
 clutter-gtk
 muffin
-libgee
 caribou
 pexpect
 metacity

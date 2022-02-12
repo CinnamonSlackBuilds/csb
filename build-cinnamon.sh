@@ -66,7 +66,6 @@ for dir in \
   clutter \
   clutter-gtk \
   muffin \
-  libgee \
   caribou \
   pexpect \
   metacity \
