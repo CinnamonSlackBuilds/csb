@@ -23,7 +23,7 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=cinnamon
-VERSION=${VERSION:-5.2.7}
+VERSION=${VERSION:-5.4.0}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
@@ -115,7 +115,7 @@ cp $CWD/slackware-background-*.png $PKG/usr/share/backgrounds/cinnamon/desktop/
 cp $CWD/slackware.xml $PKG/usr/share/cinnamon-background-properties/
 
 # override schema to provide a default Slackware background wallpaper
-cp $CWD/slackware-14.2.gschema.override $PKG/usr/share/glib-2.0/schemas
+cp $CWD/slackware-15.0.gschema.override $PKG/usr/share/glib-2.0/schemas
 
 mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
