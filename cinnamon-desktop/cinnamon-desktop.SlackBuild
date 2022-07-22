@@ -82,7 +82,6 @@ meson setup \
   --libdir=lib${LIBDIRSUFFIX} \
   --libexecdir=/usr/lib${LIBDIRSUFFIX} \
   --mandir=/usr/man \
-  -Ddocs=true \
   ..
 
   ninja
