@@ -87,8 +87,6 @@ meson setup \
   --libexecdir=/usr/lib${LIBDIRSUFFIX} \
   --mandir=/usr/man \
   --buildtype=plain \
-  -Dgconf=false \
-  -Ddocbook=false \
   ..
 
   ninja
