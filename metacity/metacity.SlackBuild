@@ -23,7 +23,7 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=metacity
-VERSION=${VERSION:-3.44.0}
+VERSION=${VERSION:-3.46.0}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
@@ -35,7 +35,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c https://ftp.acc.umu.se/pub/gnome/sources/$PRGNAM/3.44/$PRGNAM-$VERSION.tar.xz
+wget -c https://ftp.acc.umu.se/pub/gnome/sources/$PRGNAM/3.46/$PRGNAM-$VERSION.tar.xz
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/csb}
