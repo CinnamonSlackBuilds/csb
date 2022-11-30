@@ -79,6 +79,7 @@ for dir in \
   cinnamon-screensaver \
   mint-y-icons \
   mint-themes \
+  mint-cursor-themes \
   cinnamon \
   pia-manager \
   ; do
