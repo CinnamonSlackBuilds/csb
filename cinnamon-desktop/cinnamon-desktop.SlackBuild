@@ -2,7 +2,7 @@
 
 # Slackware build script for cinnamon-desktop
 
-# Copyright 2014-2022 Willy Sudiarto Raharjo <willysr@slackware-id.org>
+# Copyright 2014-2023 Willy Sudiarto Raharjo <willysr@slackware-id.org>
 # All rights reserved.
 #
 # Redistribution and use of this script, with or without modification, is
@@ -23,7 +23,7 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=cinnamon-desktop
-VERSION=${VERSION:-5.6.0}
+VERSION=${VERSION:-5.6.1}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
