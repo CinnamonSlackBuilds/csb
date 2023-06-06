@@ -2,7 +2,7 @@
 
 # Slackware build script for mint-themes
 
-# Copyright 2018-2022 Willy Sudiarto Raharjo <willysr@slackware-id.org>
+# Copyright 2018-2023 Willy Sudiarto Raharjo <willysr@slackware-id.org>
 # All rights reserved.
 #
 # Redistribution and use of this script, with or without modification, is
@@ -23,8 +23,8 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=mint-themes
-VERSION=${VERSION:-2.0.7}
-COMMITVER=${COMMITVER:-48dc7b21fd58be707d5f4839ae24555ce6d2c747}
+VERSION=${VERSION:-2.1.0}
+COMMITVER=${COMMITVER:-b6e3413434f8e16b2fc91b814168c869714dfbcb}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
