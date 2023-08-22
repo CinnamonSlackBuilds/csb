@@ -17,6 +17,6 @@ if [ -e usr/share/glib-2.0/schemas ]; then
 fi
 
 if ! grep -q ^colord: /etc/group ; then
-  groupadd -g 303 colord
-  useradd -d /var/lib/colord -u 303 -g colord -s /bin/false colord
+  chroot . groupadd -g 303 colord
+  chroot . useradd -d /var/lib/colord -u 303 -g colord -s /bin/false colord
 fi
