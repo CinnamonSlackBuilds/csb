@@ -44,7 +44,6 @@ CHECKDUPLICATE=0
 for dir in \
   xdotool \
   gsound \
-  libcroco \
   pytz \
   libtimezonemap \
   tinycss \
