@@ -23,7 +23,7 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=muffin
-VERSION=${VERSION:-5.8.0}
+VERSION=${VERSION:-6.0.0}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
@@ -88,7 +88,9 @@ cd build
     --sysconfdir=/etc \
     -Dstrip=true \
     -Dprofiler=false \
-    -Ddefault_driver=gles2
+    -Dwayland=true \
+    -Dnative_backend=true \
+    -Ddefault_driver=auto
   "${NINJA:=ninja}"
   DESTDIR=$PKG $NINJA install
 cd ..
