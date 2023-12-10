@@ -1,6 +1,5 @@
 xdotool
 gsound
-libcroco
 pytz
 libtimezonemap
 tinycss
@@ -35,6 +34,7 @@ python3-xapp
 psutil
 cinnamon-screensaver
 mint-y-icons
+mint-l-icons
 mint-themes
 mint-cursor-themes
 cinnamon

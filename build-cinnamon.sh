@@ -77,6 +77,7 @@ for dir in \
   psutil \
   cinnamon-screensaver \
   mint-y-icons \
+  mint-l-icons \
   mint-themes \
   mint-cursor-themes \
   cinnamon \
