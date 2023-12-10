@@ -23,9 +23,9 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=python-pam
-VERSION=${VERSION:-1.8.4}
-COMMITVER=8d0e14a53adaeb08d27214976b5ac50adc9146bf
-BUILD=${BUILD:-4}
+VERSION=${VERSION:-2.0.2}
+COMMITVER=aa64482c9de78672b67e09adefe346e0e250d7af
+BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
 if [ -z "$ARCH" ]; then
@@ -77,17 +77,12 @@ find -L . \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
-python setup.py install --root=$PKG
-python3 setup.py install --root=$PKG
+python3 -m build --wheel --no-isolation
+
+python3 -m installer --destdir "$PKG" dist/*.whl
 
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
-
-(
-  cd $PKG/usr/lib${LIBDIRSUFFIX}/python2.7/site-packages/
-  ln -s pam.py PAM.py
-  ln -s pam.pyc PAM.pyc
-)
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
 cp -a $DOCS $PKG/usr/doc/$PRGNAM-$VERSION
