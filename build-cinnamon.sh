@@ -75,7 +75,6 @@ for dir in \
   cinnamon-translations \
   nemo \
   python3-xapp \
-  psutil \
   cinnamon-screensaver \
   mint-y-icons \
   mint-l-icons \
