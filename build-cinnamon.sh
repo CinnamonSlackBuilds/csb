@@ -42,6 +42,7 @@ CHECKDUPLICATE=0
 
 # Loop for all packages
 for dir in \
+  python3-webencodings \
   xdotool \
   gsound \
   pytz \
