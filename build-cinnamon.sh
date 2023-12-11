@@ -48,7 +48,6 @@ for dir in \
   gsound \
   pytz \
   libtimezonemap \
-  tinycss \
   setproctitle \
   ptyprocess \
   cjs \
