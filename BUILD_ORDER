@@ -13,8 +13,6 @@ pangox-compat
 libgnomekbd
 xapp
 cinnamon-session
-libgusb
-colord
 libgtop
 cinnamon-settings-daemon
 gnome-menus

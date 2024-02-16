@@ -57,8 +57,6 @@ for dir in \
   libgnomekbd \
   xapp \
   cinnamon-session \
-  libgusb \
-  colord \
   cinnamon-settings-daemon \
   gnome-menus \
   cinnamon-menus \
