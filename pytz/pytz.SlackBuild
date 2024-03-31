@@ -25,7 +25,7 @@
 # Modified for CSB Project
 
 PRGNAM=pytz
-VERSION=${VERSION:-2023.3}
+VERSION=${VERSION:-2024.1}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
@@ -37,7 +37,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c https://files.pythonhosted.org/packages/5e/32/12032aa8c673ee16707a9b6cdda2b09c0089131f35af55d443b6a9c69c1d/pytz-2023.3.tar.gz
+wget -c https://files.pythonhosted.org/packages/90/26/9f1f00a5d021fff16dee3de13d43e5e978f3d58928e129c3a62cf7eb9738/pytz-2024.1.tar.gz
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/csb}
