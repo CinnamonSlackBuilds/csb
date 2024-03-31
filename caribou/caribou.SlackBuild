@@ -2,7 +2,7 @@
 
 # Slackware build script for caribou
 
-# Copyright 2014-2022 Willy Sudiarto Raharjo <willysr@slackware-id.org>
+# Copyright 2014-2024 Willy Sudiarto Raharjo <willysr@slackware-id.org>
 # All rights reserved.
 #
 # Redistribution and use of this script, with or without modification, is
@@ -24,7 +24,7 @@
 
 PRGNAM=caribou
 VERSION=${VERSION:-0.4.21}
-BUILD=${BUILD:-4}
+BUILD=${BUILD:-5}
 TAG=${TAG:-_csb}
 
 if [ -z "$ARCH" ]; then
@@ -35,7 +35,6 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-#wget -c https://ftp.acc.umu.se/pub/GNOME/sources/caribou/0.4/$PRGNAM-$VERSION.tar.xz
 wget -c https://gitlab.gnome.org/GNOME/caribou/-/archive/master/caribou-master.tar.gz
 
 CWD=$(pwd)
