@@ -1,0 +1,12 @@
+               |-----handy-ruler------------------------------------------------------|
+python3-libsass: python3-libsass (SASS for Python)
+python3-libsass:
+python3-libsass: This package provides a simple Python extension module sass which is
+python3-libsass: binding Libsass (written in C/C++ by Hampton Catlin and Aaron Leung).
+python3-libsass:
+python3-libsass: Homepage: https://sass.github.io/libsass-python/
+python3-libsass:
+python3-libsass:
+python3-libsass:
+python3-libsass:
+python3-libsass:
