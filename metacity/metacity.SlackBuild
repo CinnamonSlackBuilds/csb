@@ -2,7 +2,7 @@
 
 # Slackware build script for metacity
 
-# Copyright 2014-2023 Willy Sudiarto Raharjo <willysr@slackware-id.org>
+# Copyright 2014-2024 Willy Sudiarto Raharjo <willysr@slackware-id.org>
 # All rights reserved.
 #
 # Redistribution and use of this script, with or without modification, is
@@ -23,7 +23,7 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=metacity
-VERSION=${VERSION:-3.50.0}
+VERSION=${VERSION:-3.52.0}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
@@ -35,7 +35,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c https://ftp.acc.umu.se/pub/gnome/sources/$PRGNAM/3.50/$PRGNAM-$VERSION.tar.xz
+wget -c https://ftp.acc.umu.se/pub/gnome/sources/$PRGNAM/3.52/$PRGNAM-$VERSION.tar.xz
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/csb}
