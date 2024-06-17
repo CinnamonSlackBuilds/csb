@@ -2,7 +2,7 @@
 
 # Slackware build script for mint-y-icons
 
-# Copyright 2016-2023 Willy Sudiarto Raharjo <willysr@slackware-id.org>
+# Copyright 2016-2024 Willy Sudiarto Raharjo <willysr@slackware-id.org>
 # All rights reserved.
 #
 # Redistribution and use of this script, with or without modification, is
@@ -23,8 +23,8 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=mint-y-icons
-VERSION=${VERSION:-1.7.1}
-COMMITVER=${COMMITVER:-22982e984d5e76e197678e31d641f965ff58e2a0}
+VERSION=${VERSION:-1.7.6}
+COMMITVER=${COMMITVER:-a7ed8a66012977ecaa876bf01a8246e586e62357}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
