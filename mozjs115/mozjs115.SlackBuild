@@ -87,7 +87,7 @@ find . \
  -exec chmod 644 {} \+
 
 # We need to use the incredibly ancient autoconf-2.13 for this  :/
-( cd $CWD/autoconf ; ./autoconf.build )
+( cd $CWD/autoconf ; sh ./autoconf.build )
 PATH=$TMP/autoconf-tmp/usr/bin:$PATH
 
 # Patches from Fedora:
