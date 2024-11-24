@@ -43,7 +43,7 @@ if [ ! -z "${PRINT_PACKAGE_NAME}" ]; then
   exit 0
 fi
 
-wget -c https://ftp.mozilla.org/pub/firefox/releases/115.16.1esr/source/firefox-115.16.1esr.source.tar.xz
+wget -c https://ftp.mozilla.org/pub/firefox/releases/115.17.0esr/source/firefox-115.17.0esr.source.tar.xz
 
 # This will collide with a Firefox build that happens simultaneously.
 # Therefore, for use with make_world.sh, REQUIRE_GLOBAL_LOCK.
@@ -101,11 +101,16 @@ zcat $CWD/patches/0001-Skip-failing-tests-on-ppc64-and-s390x.patch.gz | patch -p
 zcat $CWD/patches/remove-sloppy-m4-detection-from-bundled-autoconf.patch.gz | patch -p1 --verbose || exit 1
 zcat $CWD/patches/spidermonkey_checks_disable.patch.gz | patch -p1 --verbose || exit 1
 zcat $CWD/patches/tests-increase-timeout.patch.gz | patch -p1 --verbose || exit 1
+zcat $CWD/patches/clang19.patch.gz | patch -p1 --verbose || exit 1
 
 # Remove bundled zlib directory and use system version:
 rm -rf modules/zlib
 
-cd js/src
+cd js
+
+sed -i 's|"icu-i18n >= 73.1"|"icu-i18n >= 73.1 icu-uc"|g' moz.configure
+
+cd src
 
 # We need to do this because patches above touch configure.in:
 autoconf-2.13
