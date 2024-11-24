@@ -23,7 +23,7 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=metacity
-VERSION=${VERSION:-3.52.0}
+VERSION=${VERSION:-3.54.0}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
@@ -35,7 +35,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c https://ftp.acc.umu.se/pub/gnome/sources/$PRGNAM/3.52/$PRGNAM-$VERSION.tar.xz
+wget -c https://gitlab.gnome.org/GNOME/metacity/-/archive/3.54.0/$PRGNAM-$VERSION.tar.bz2
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/csb}
@@ -65,7 +65,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tar.xz
+tar xvf $CWD/$PRGNAM-$VERSION.tar.bz2
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
@@ -74,6 +74,7 @@ find -L . \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
+autoreconf -fiv
 CFLAGS="$SLKCFLAGS" \
 CXXFLAGS="$SLKCFLAGS" \
 ./configure \
