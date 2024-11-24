@@ -29,7 +29,7 @@ cd $(dirname $0) ; CWD=$(pwd)
 PRGNAM=python3-libsass
 SRCNAM=$(echo $PRGNAM | cut -c9-15)
 VERSION=${VERSION:-0.23.0}
-BUILD=${BUILD:-1}
+BUILD=${BUILD:-2}
 TAG=${TAG:-_csb}
 PKGTYPE=${PKGTYPE:-txz}
 
