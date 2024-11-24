@@ -26,7 +26,7 @@ cd $(dirname $0) ; CWD=$(pwd)
 
 PKGNAM=mozjs115
 SRCNAME=firefox
-VERSION=115.17.0esr
+VERSION=${VERSION:-115.17.0esr}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
@@ -73,8 +73,8 @@ rm -rf $SRCNAME-$VERSION ; rm -rf $SRCNAME-$(echo $VERSION | cut -f 1 -d e)
 rm -rf firefox-unpack
 mkdir firefox-unpack
 cd firefox-unpack
-echo "Extracting $CWD/$SRCNAME-$VERSION.source.tar.?z..."
-tar xf $CWD/$SRCNAME-$VERSION.source.tar.?z || exit 1
+echo "Extracting $CWD/${SRCNAME}-${VERSION}.source.tar.?z..."
+tar xf $CWD/${SRCNAME}-${VERSION}.source.tar.?z || exit 1
 mv * ..
 cd ..
 rm -rf firefox-unpack
