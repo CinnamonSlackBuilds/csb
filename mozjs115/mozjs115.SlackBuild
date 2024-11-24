@@ -26,7 +26,7 @@ cd $(dirname $0) ; CWD=$(pwd)
 
 PKGNAM=mozjs115
 SRCNAME=firefox
-VERSION=$(basename $(ls $SRCNAME-*.tar.?z | cut -d - -f 2 | rev | cut -f 3- -d . | rev) .source)
+VERSION=115.17.0
 BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
