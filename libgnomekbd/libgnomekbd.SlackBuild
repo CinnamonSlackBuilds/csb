@@ -2,7 +2,7 @@
 
 # Slackware build script for libgnomekbd
 
-# Copyright 2014-2022 Willy Sudiarto Raharjo <willysr@slackware-id.org>
+# Copyright 2014-2024 Willy Sudiarto Raharjo <willysr@slackware-id.org>
 # All rights reserved.
 #
 # Redistribution and use of this script, with or without modification, is
@@ -23,8 +23,8 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=libgnomekbd
-VERSION=${VERSION:-3.28.0}
-BUILD=${BUILD:-2}
+VERSION=${VERSION:-3.28.1}
+BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
 if [ -z "$ARCH" ]; then
@@ -35,7 +35,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c http://ftp.acc.umu.se/pub/gnome/sources/libgnomekbd/3.28/$PRGNAM-$VERSION.tar.xz
+wget -c https://download.gnome.org/sources/libgnomekbd/3.28/$PRGNAM-$VERSION.tar.xz
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/csb}
@@ -74,7 +74,6 @@ find -L . \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
-patch -p1 < $CWD/pkgconfig.patch
 mkdir build
 cd build
   CFLAGS="$SLKCFLAGS" \
