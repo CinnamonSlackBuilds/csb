@@ -15,7 +15,6 @@ pangox-compat
 libgnomekbd
 xapp
 cinnamon-session
-libgtop
 cinnamon-settings-daemon
 gnome-menus
 cinnamon-menus
