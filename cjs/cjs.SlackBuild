@@ -23,8 +23,8 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=cjs
-VERSION=${VERSION:-6.2.0}
-BUILD=${BUILD:-2}
+VERSION=${VERSION:-6.4.0}
+BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
 if [ -z "$ARCH" ]; then
@@ -73,8 +73,6 @@ find -L . \
   -o -perm 511 \) -exec chmod 755 {} \; -o \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
-
-patch -p1 < $CWD/a4d0b0241582fdc5357a6bfc2b0ef2e05fea4893.patch
 
 mkdir -p build
 cd build
