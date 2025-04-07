@@ -23,8 +23,8 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=cjs
-VERSION=${VERSION:-6.4.0}
-BUILD=${BUILD:-2}
+VERSION=${VERSION:-128.0}
+BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
 if [ -z "$ARCH" ]; then
@@ -73,10 +73,6 @@ find -L . \
   -o -perm 511 \) -exec chmod 755 {} \; -o \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
-
-# Support mozjs 128
-patch -p1 < $CWD/f43d5b579a6d84f4947ee61fde6f00b7ee6c1155.patch
-patch -p1 < $CWD/daa405768117f016b0db2768eef57856815b6b5f.patch
 
 mkdir -p build
 cd build
