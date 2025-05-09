@@ -35,7 +35,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c https://download.gnome.org/sources/$PRGNAM/1.8/$PRGNAM-$VERSION.tar.xz
+wget -c https://ftp2.osuosl.org/pub/blfs/11.1/c/$PRGNAM-$VERSION.tar.xz
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/csb}
@@ -65,7 +65,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tar.gz
+tar xvf $CWD/$PRGNAM-$VERSION.tar.xz
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
