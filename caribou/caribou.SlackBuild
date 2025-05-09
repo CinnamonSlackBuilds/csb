@@ -35,7 +35,6 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-#wget -c https://ftp.acc.umu.se/pub/GNOME/sources/caribou/0.4/$PRGNAM-$VERSION.tar.xz
 wget -c https://gitlab.gnome.org/GNOME/caribou/-/archive/master/caribou-master.tar.gz
 
 CWD=$(pwd)
