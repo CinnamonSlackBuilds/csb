@@ -23,8 +23,8 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=cinnamon
-VERSION=${VERSION:-6.4.6}
-BUILD=${BUILD:-2}
+VERSION=${VERSION:-6.4.10}
+BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
 if [ -z "$ARCH" ]; then
@@ -116,6 +116,10 @@ cp $CWD/slackware.xml $PKG/usr/share/cinnamon-background-properties/
 
 # override schema to provide a default Slackware background wallpaper
 cp $CWD/slackware-15.0.gschema.override $PKG/usr/share/glib-2.0/schemas
+
+# Fix broken symlink
+rm -f $PKG/etc/xdg/menus/cinnamon-applications-merged
+ln -s $PKG/etc/xdg/menus/cinnamon-applications.menu $PKG/etc/xdg/menus/cinnamon-applications-merged
 
 mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
