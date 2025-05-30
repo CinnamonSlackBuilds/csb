@@ -42,6 +42,7 @@ CHECKDUPLICATE=0
 
 # Loop for all packages
 for dir in \
+  python3-pyinotify \
   python3-libsass \
   python3-webencodings \
   tinycss2 \

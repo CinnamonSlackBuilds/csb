@@ -1,0 +1,12 @@
+                 |-----handy-ruler------------------------------------------------------|
+python3-pyinotify: python3-pyinotify (python inotify module)
+python3-pyinotify:
+python3-pyinotify: Pyinotify is a Python module for monitoring filesystems changes.
+python3-pyinotify: Pyinotify relies on a Linux Kernel feature (merged in kernel 2.6.13)
+python3-pyinotify: called inotify.  inotify is an event-driven notifier; its
+python3-pyinotify: notifications are exported from kernel space to user space through
+python3-pyinotify: three system calls.
+python3-pyinotify:
+python3-pyinotify: Homepage: https://github.com/seb-m/pyinotify
+python3-pyinotify:
+python3-pyinotify:
