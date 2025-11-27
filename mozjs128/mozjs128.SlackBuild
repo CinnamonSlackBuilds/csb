@@ -29,23 +29,20 @@ VERSION=$(basename $(ls $SRCNAME-*.tar.?z | cut -d - -f 2 | rev | cut -f 3- -d .
 BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
-# Automatically determine the architecture we're building on:
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
     i?86) ARCH=i686 ;;
     arm*) ARCH=arm ;;
-    # Unless $ARCH is already set, use uname -m for all other archs:
        *) ARCH=$( uname -m ) ;;
   esac
 fi
 
-# If the variable PRINT_PACKAGE_NAME is set, then this script will report what
-# the name of the created package would be, and then exit. This information
-# could be useful to other scripts.
 if [ ! -z "${PRINT_PACKAGE_NAME}" ]; then
   echo "$PKGNAM-$VERSION-$ARCH-$BUILD.txz"
   exit 0
 fi
+
+wget -c https://archive.mozilla.org/pub/firefox/releases/128.14.0esr/source/firefox-128.14.0esr.source.tar.xz
 
 # This will collide with a Firefox build that happens simultaneously.
 # Therefore, for use with make_world.sh, REQUIRE_GLOBAL_LOCK.
