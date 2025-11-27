@@ -8,7 +8,7 @@ pytz
 libtimezonemap
 setproctitle
 ptyprocess
-mozjs115
+mozjs128
 cjs
 python-pam
 cinnamon-desktop
