@@ -24,7 +24,6 @@ cinnamon-control-center
 zenity
 cogl
 clutter
-clutter-gtk
 muffin
 caribou
 pexpect

@@ -68,7 +68,6 @@ for dir in \
   zenity \
   cogl \
   clutter \
-  clutter-gtk \
   muffin \
   caribou \
   pexpect \
