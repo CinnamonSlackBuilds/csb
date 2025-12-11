@@ -2,7 +2,7 @@
 
 # Slackware build script for gnome-menus
 
-# Copyright 2014-2022 Willy Sudiarto Raharjo <willysr@slackware-id.org>
+# Copyright 2014-2025 Willy Sudiarto Raharjo <willysr@slackware-id.org>
 # All rights reserved.
 #
 # Redistribution and use of this script, with or without modification, is
@@ -23,7 +23,7 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=gnome-menus
-VERSION=${VERSION:-3.36.0}
+VERSION=${VERSION:-3.38.1}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
@@ -35,7 +35,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c https://download.gnome.org/sources/gnome-menus/3.36/$PRGNAM-$VERSION.tar.xz
+wget -c https://download.gnome.org/sources/gnome-menus/3.38/$PRGNAM-$VERSION.tar.xz
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/csb}
