@@ -57,7 +57,7 @@ find -L . \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
 WEBKIT=false
-pkg-config --exists webkit2gtk-4.0 && WEBKIT=true
+pkg-config --exists webkit2gtk-4.1 && WEBKIT=true
 
 mkdir build
 cd build
