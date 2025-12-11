@@ -89,8 +89,7 @@ cd build
     -Dstrip=true \
     -Dprofiler=false \
     -Dwayland=true \
-    -Dnative_backend=true \
-    -Ddefault_driver=auto
+    -Dnative_backend=true
   "${NINJA:=ninja}"
   DESTDIR=$PKG $NINJA install
 cd ..
