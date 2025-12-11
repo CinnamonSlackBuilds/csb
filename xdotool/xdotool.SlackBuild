@@ -10,7 +10,7 @@
 cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=xdotool
-VERSION=${VERSION:-3.20210903.1}
+VERSION=${VERSION:-4.20251130.1}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 PKGTYPE=${PKGTYPE:-txz}
@@ -28,7 +28,7 @@ if [ ! -z "${PRINT_PACKAGE_NAME}" ]; then
   exit 0
 fi
 
-wget -c https://github.com/jordansissel/xdotool/releases/download/v3.20210903.1/xdotool-3.20210903.1.tar.gz
+wget -c https://github.com/jordansissel/xdotool/releases/download/v${VERSION}/xdotool-${VERSION}.tar.gz
 
 TMP=${TMP:-/tmp/csb}
 PKG=$TMP/package-$PRGNAM
