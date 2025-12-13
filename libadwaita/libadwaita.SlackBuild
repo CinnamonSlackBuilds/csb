@@ -28,7 +28,7 @@ PRGNAM=libadwaita
 VERSION=${VERSION:-1.8.2}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
-PKGTYPE=${PKGTYPE:-tgz}
+PKGTYPE=${PKGTYPE:-txz}
 OUTPUT=${OUTPUT:-/tmp}
 
 if [ -z "$ARCH" ]; then
