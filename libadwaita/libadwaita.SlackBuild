@@ -29,6 +29,7 @@ VERSION=${VERSION:-1.8.2}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 PKGTYPE=${PKGTYPE:-tgz}
+OUTPUT=${OUTPUT:-/tmp}
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
@@ -114,4 +115,4 @@ mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
 
 cd $PKG
-/sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE
+/sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.${PKGTYPE:-txz}
