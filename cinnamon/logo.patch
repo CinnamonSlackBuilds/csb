@@ -1,18 +1,20 @@
---- Cinnamon-4.0.2/files/usr/share/cinnamon/applets/menu@cinnamon.org/settings-schema.json.orig	2018-11-26 01:17:37.106000000 +0700
-+++ Cinnamon-4.0.2/files/usr/share/cinnamon/applets/menu@cinnamon.org/settings-schema.json	2018-11-26 01:18:03.416000000 +0700
-@@ -40,13 +40,13 @@
+--- cinnamon-6.6.1/files/usr/share/cinnamon/applets/menu@cinnamon.org/settings-schema.json.orig 2025-12-16 21:30:40.835261357 +0700
++++ cinnamon-6.6.1/files/usr/share/cinnamon/applets/menu@cinnamon.org/settings-schema.json      2025-12-16 21:32:26.953132983 +0700
+@@ -57,14 +57,14 @@
   },
   "menu-custom" : {
      "type" : "switch",
 -    "default" : false,
 +    "default" : true,
-     "description" : "Use a custom icon and label",
-     "tooltip" : "Check this to specify a custom icon and label"
+     "description" : "Use a custom icon and label"
   },
   "menu-icon" : {
      "type" : "iconfilechooser",
 -    "default" : "cinnamon-symbolic",
 +    "default" : "slackware-logo",
      "description" : "Icon",
-     "tooltip" : "Select an icon to show in the panel.",
-     "dependency" : "menu-custom",
+-    "default_icon" : "cinnamon-symbolic",
++    "default_icon" : "slackware-logo",
+     "dependency" : "menu-custom"
+  },
+  "menu-icon-size" : {
