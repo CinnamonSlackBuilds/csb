@@ -77,6 +77,9 @@ find -L . \
 # Patch to use Slackware Logo, thanks to Skaendo
 patch -p1 < $CWD/logo.patch
 
+# We will patch the favorite apps using Slackware's stock apps
+patch -p1 < $CWD/cinnamon-schema.patch
+
 mkdir build
 cd build
   CFLAGS="$SLKCFLAGS" \
