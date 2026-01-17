@@ -28,7 +28,7 @@ cd $(dirname $0) ; CWD=$(pwd)
 PRGNAM=lightdm-slick-greeter
 VERSION=${VERSION:-2.2.6}
 BUILD=${BUILD:-1}
-TAG=${TAG:-_SBo}
+TAG=${TAG:-_csb}
 PKGTYPE=${PKGTYPE:-txz}
 
 wget -c https://github.com/linuxmint/slick-greeter/archive/$VERSION/slick-greeter-$VERSION.tar.gz
@@ -48,7 +48,7 @@ if [ ! -z "${PRINT_PACKAGE_NAME}" ]; then
   exit 0
 fi
 
-TMP=${TMP:-/tmp/SBo}
+TMP=${TMP:-/tmp/csb}
 PKG=$TMP/package-$PRGNAM
 OUTPUT=${OUTPUT:-/tmp}
 
