@@ -86,6 +86,7 @@ for dir in \
   pia-manager \
   lightdm \
   lightdm-slick-greeter \
+  lightdm-settings \
   ; do
   # Get the package name
   package=$(echo $dir | cut -f2- -d /)
