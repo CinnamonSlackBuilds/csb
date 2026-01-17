@@ -84,6 +84,7 @@ for dir in \
   mint-cursor-themes \
   cinnamon \
   pia-manager \
+  lightdm \
   ; do
   # Get the package name
   package=$(echo $dir | cut -f2- -d /)
