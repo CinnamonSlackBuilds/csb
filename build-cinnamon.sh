@@ -85,6 +85,7 @@ for dir in \
   cinnamon \
   pia-manager \
   lightdm \
+  lightdm-slick-greeter \
   ; do
   # Get the package name
   package=$(echo $dir | cut -f2- -d /)
