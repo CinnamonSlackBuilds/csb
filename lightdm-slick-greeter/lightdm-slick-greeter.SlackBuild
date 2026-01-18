@@ -85,7 +85,7 @@ mkdir -p build
 cd build
   CFLAGS="$SLKCFLAGS" \
   CXXFLAGS="$SLKCFLAGS" \
-  meson .. \
+  meson setup .. \
     --prefix=/usr \
     --sysconfdir=/etc \
     --sbindir=/usr/bin \
