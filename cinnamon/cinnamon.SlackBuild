@@ -24,7 +24,7 @@
 
 PRGNAM=cinnamon
 VERSION=${VERSION:-6.6.5}
-BUILD=${BUILD:-1}
+BUILD=${BUILD:-2}
 TAG=${TAG:-_csb}
 
 if [ -z "$ARCH" ]; then
@@ -122,7 +122,7 @@ cp $CWD/slackware-15.0.gschema.override $PKG/usr/share/glib-2.0/schemas
 
 # Fix broken symlink
 rm -f $PKG/etc/xdg/menus/cinnamon-applications-merged
-ln -s $PKG/etc/xdg/menus/cinnamon-applications.menu $PKG/etc/xdg/menus/cinnamon-applications-merged
+ln -s /etc/xdg/menus/cinnamon-applications.menu $PKG/etc/xdg/menus/cinnamon-applications-merged
 
 mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
