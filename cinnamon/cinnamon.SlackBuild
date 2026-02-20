@@ -24,7 +24,7 @@
 
 PRGNAM=cinnamon
 VERSION=${VERSION:-6.6.5}
-BUILD=${BUILD:-2}
+BUILD=${BUILD:-3}
 TAG=${TAG:-_csb}
 
 if [ -z "$ARCH" ]; then
@@ -114,7 +114,7 @@ chown -R root:root $PKG/usr/doc/$PRGNAM-$VERSION
 
 # provide some background wallpapers
 mkdir -p $PKG/usr/share/backgrounds/cinnamon/desktop/ $PKG/usr/share/cinnamon-background-properties/
-cp $CWD/slackware-background-*.png $PKG/usr/share/backgrounds/cinnamon/desktop/
+cp $CWD/slackware-background-*.* $PKG/usr/share/backgrounds/cinnamon/desktop/
 cp $CWD/slackware.xml $PKG/usr/share/cinnamon-background-properties/
 
 # override schema to provide a default Slackware background wallpaper
