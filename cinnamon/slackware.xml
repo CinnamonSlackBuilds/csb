@@ -21,8 +21,20 @@
         </wallpaper>
 	<wallpaper deleted="false">
                 <name>Slackware Linux (Light)</name>
-                <filename>/usr/share/backgrounds/cinnamon/desktop/slackware-background-light.png</filename>
+                <filename>/usr/share/backgrounds/cinnamon/desktop/slackware-background-light.jpg</filename>
                 <options>zoom</options>
                 <artist>Amarillo Linux Users Group</artist>
+        </wallpaper>
+    <wallpaper deleted="false">
+                <name>Slackware Linux (Green)</name>
+                <filename>/usr/share/backgrounds/cinnamon/desktop/slackware-background-green.png</filename>
+                <options>zoom</options>
+                <artist>fire-h0und</artist>
+        </wallpaper>
+    <wallpaper deleted="false">
+                <name>Slackware Linux (Green)</name>
+                <filename>/usr/share/backgrounds/cinnamon/desktop/slackware-background-orange.png</filename>
+                <options>zoom</options>
+                <artist>fire-h0und</artist>
         </wallpaper>
 </wallpapers>
