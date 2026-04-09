@@ -86,6 +86,8 @@ cd build
     --mandir=/usr/man \
     --prefix=/usr \
     --sysconfdir=/etc \
+    -Dskip_dbus_tests=true \
+    -Dskip_gtk_tests=true \
     -Dinstalled_tests=false
   ninja
   DESTDIR=$PKG ninja install
