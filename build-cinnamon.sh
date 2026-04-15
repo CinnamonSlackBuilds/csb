@@ -54,7 +54,6 @@ for dir in \
   libtimezonemap \
   setproctitle \
   ptyprocess \
-  mozjs128 \
   cjs \
   python-pam \
   cinnamon-desktop \
