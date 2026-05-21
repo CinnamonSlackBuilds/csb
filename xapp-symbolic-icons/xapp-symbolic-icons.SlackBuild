@@ -25,7 +25,7 @@
 cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=xapp-symbolic-icons
-VERSION=${VERSION:-1.0.8}
+VERSION=${VERSION:-1.1.0}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 PKGTYPE=${PKGTYPE:-txz}
@@ -99,7 +99,7 @@ cd build
 cd ..
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
-cp -a AUTHORS COPYING* ChangeLog README.md $PKG/usr/doc/$PRGNAM-$VERSION
+cp -a AUTHORS LICENSE README.md $PKG/usr/doc/$PRGNAM-$VERSION
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 
 mkdir -p $PKG/install
