@@ -42,7 +42,6 @@ CHECKDUPLICATE=0
 
 # Loop for all packages
 for dir in \
-  libadwaita \
   xapp-symbolic-icons \
   python3-pyinotify \
   python3-libsass \
