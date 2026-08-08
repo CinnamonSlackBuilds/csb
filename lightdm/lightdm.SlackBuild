@@ -107,6 +107,8 @@ CXXFLAGS="$SLKCFLAGS" \
   --with-greeter-user=lightdm  \
   --with-greeter-session=lightdm-gtk-greeter \
   --disable-liblightdm-qt5 \
+  --enable-liblightdm-qt6 \
+  --disable-gtk-doc-html \
   --mandir=/usr/man \
   --docdir=/usr/doc/$PRGNAM-$VERSION \
   --build=$ARCH-slackware-linux
