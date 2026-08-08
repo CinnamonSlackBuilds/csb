@@ -93,9 +93,11 @@ find -L . \
 patch -p1 < $CWD/default-config.patch
 sed -i s/systemd/elogind/ data/pam/*
 
+export PATH="$PATH:/usr/lib${LIBDIRSUFFIX}/qt6/bin"
+autoreconf -fiv
 CFLAGS="$SLKCFLAGS" \
 CXXFLAGS="$SLKCFLAGS" \
-./autogen.sh \
+./configure \
   --prefix=/usr \
   --libdir=/usr/lib${LIBDIRSUFFIX} \
   --libexecdir=/usr/lib${LIBDIRSUFFIX}/lightdm \
