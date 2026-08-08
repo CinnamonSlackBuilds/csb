@@ -115,6 +115,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --docdir=/usr/doc/$PRGNAM-$VERSION \
   --build=$ARCH-slackware-linux
 
+sed -i "/\@YELP_HELP_RULES\@/d" help/Makefile
 make
 make install DESTDIR=$PKG
 
