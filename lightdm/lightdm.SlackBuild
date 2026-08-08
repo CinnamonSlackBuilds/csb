@@ -32,12 +32,12 @@
 cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=lightdm
-VERSION=${VERSION:-1.32.0}
-BUILD=${BUILD:-3}
+VERSION=${VERSION:-1.33.0}
+BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 PKGTYPE=${PKGTYPE:-txz}
 
-wget -c https://github.com/canonical/lightdm/releases/download/1.32.0/lightdm-1.32.0.tar.xz
+wget -c https://github.com/ubuntu/lightdm/archive/$VERSION/$PRGNAM-$VERSION.tar.gz
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
@@ -81,7 +81,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tar.xz
+tar xvf $CWD/$PRGNAM-$VERSION.tar.gz
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
@@ -95,7 +95,7 @@ sed -i s/systemd/elogind/ data/pam/*
 
 CFLAGS="$SLKCFLAGS" \
 CXXFLAGS="$SLKCFLAGS" \
-./configure \
+./autogen.sh \
   --prefix=/usr \
   --libdir=/usr/lib${LIBDIRSUFFIX} \
   --libexecdir=/usr/lib${LIBDIRSUFFIX}/lightdm \
