@@ -93,7 +93,12 @@ find -L . \
 patch -p1 < $CWD/default-config.patch
 sed -i s/systemd/elogind/ data/pam/*
 
+# this to enable script to find qt6's moc
 export PATH="$PATH:/usr/lib${LIBDIRSUFFIX}/qt6/bin"
+
+# I disabled documentation option in order to avoid having
+# to install yelp-xsl dependency
+# I also enable qt6 client library and disable qt5
 autoreconf -fiv
 CFLAGS="$SLKCFLAGS" \
 CXXFLAGS="$SLKCFLAGS" \
@@ -115,6 +120,8 @@ CXXFLAGS="$SLKCFLAGS" \
   --docdir=/usr/doc/$PRGNAM-$VERSION \
   --build=$ARCH-slackware-linux
 
+# Without this removal line, the documentation will be processed
+# and it will fail to build due to yelp-xsl is missing
 sed -i "/\@YELP_HELP_RULES\@/d" help/Makefile
 make
 make install DESTDIR=$PKG
