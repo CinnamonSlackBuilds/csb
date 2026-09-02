@@ -35,7 +35,7 @@ PKGTYPE=${PKGTYPE:-txz}
 
 SRCNAM=pyinotify
 
-wget -c https://pypi.python.org/packages/source/p/pyinotify/pyinotify-$VERSION.tar.gz
+wget -c https://files.pythonhosted.org/packages/source/p/pyinotify/pyinotify-$VERSION.tar.gz
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
