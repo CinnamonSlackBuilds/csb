@@ -64,7 +64,6 @@ for dir in \
   gnome-menus \
   cinnamon-menus \
   cinnamon-control-center \
-  zenity \
   cogl \
   clutter \
   muffin \

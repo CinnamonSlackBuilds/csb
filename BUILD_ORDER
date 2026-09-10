@@ -20,7 +20,6 @@ cinnamon-settings-daemon
 gnome-menus
 cinnamon-menus
 cinnamon-control-center
-zenity
 cogl
 clutter
 muffin
