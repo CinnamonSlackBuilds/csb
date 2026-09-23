@@ -40,8 +40,8 @@ CSBROOT=$(pwd)
 # Check for duplicate sources (default: OFF)
 CHECKDUPLICATE=0
 
-# Rebuild package if the same version is already installed? (default: OFF)
-REBUILDPKG=0
+# Skip rebuild package, if the same version is already installed (default: ON)
+SKIPREBUILD=1
 
 # Loop for all packages
 for dir in \
@@ -103,16 +103,6 @@ for dir in \
   # Get the build
   build=$(cat ${package}.SlackBuild | grep "BUILD:" | cut -d "-" -f2 | rev | cut -c 2- | rev)
 
-  if [ $REBUILDPKG -eq 0 ]; then
-    # If the current package version is already installed, skip rebuilding it.
-    pkgname="$(find /var/log/packages/${package}-${version}-*-${build}*csb | sed 's/^.*\///g')"
-    # check against null and non-usable strings
-    if [ -n "$pkgname" ] && [ "${#pkgname}" -gt "${#package}" ]; then
-      echo "CSB package ${pkgname} is already installed ... rebuild skipped"
-      continue
-    fi
-  fi
-
   if [ $CHECKDUPLICATE -eq 1 ]; then
     # Check for duplicate sources
     sourcefile="$(ls -l $CSBROOT/$dir/${package}-*.tar.?z* | wc -l)"
@@ -121,6 +111,16 @@ for dir in \
       ls $CSBROOT/$dir/${package}-*.tar.?z* | cut -d " " -f1
       echo "Please delete sources other than ${package}-$version to avoid problems"
       exit 1
+    fi
+  fi
+
+  if [ $SKIPREBUILD -eq 1 ]; then
+    # If the current package version is already installed, skip rebuilding it.
+    pkgname="$(find /var/log/packages/${package}-${version}-*-${build}*csb | sed 's/^.*\///g')"
+    # check against null and non-usable strings
+    if [ -n "$pkgname" ] && [ "${#pkgname}" -gt "${#package}" ]; then
+      echo "CSB package ${pkgname} is already installed ... rebuild skipped"
+      continue
     fi
   fi
 
