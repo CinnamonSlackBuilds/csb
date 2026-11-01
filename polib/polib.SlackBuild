@@ -35,7 +35,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c https://files.pythonhosted.org/packages/10/9a/79b1067d27e38ddf84fe7da6ec516f1743f31f752c6122193e7bce38bdbf/polib-1.2.0.tar.gz
+wget -c https://files.pythonhosted.org/packages/source/p/polib/polib-1.2.0.tar.gz
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/csb}
@@ -70,8 +70,8 @@ find -L . \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
-python setup.py install --root=$PKG
-python3 setup.py install --root=$PKG
+python3 -m build --wheel --no-isolation
+python3 -m installer --destdir "$PKG" dist/*.whl
 
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
@@ -81,22 +81,6 @@ cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 
 mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
-
-# Don't fail if sphinx not installed
-if [ -x /usr/bin/sphinx-build ] ; then
-    (   cd $TMP/$PRGNAM-$VERSION/docs
-        make html
-        make pickle
-        make json
-        make htmlhelp
-        make qthelp
-        PAPER=letter make latex
-        mv ./_build/* $PKG/usr/doc/$PRGNAM-$VERSION/
-    )
-else
-    echo "Sphinx documenting program not found"
-    echo "Skipping document building"
-fi
 
 cd $PKG
 /sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.${PKGTYPE:-txz}
