@@ -68,7 +68,6 @@ for dir in \
   cinnamon-menus \
   cinnamon-control-center \
   muffin \
-  caribou \
   pexpect \
   metacity \
   polib \
