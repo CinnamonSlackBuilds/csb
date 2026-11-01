@@ -67,8 +67,6 @@ for dir in \
   gnome-menus \
   cinnamon-menus \
   cinnamon-control-center \
-  cogl \
-  clutter \
   muffin \
   caribou \
   pexpect \

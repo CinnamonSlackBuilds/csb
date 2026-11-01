@@ -20,8 +20,6 @@ cinnamon-settings-daemon
 gnome-menus
 cinnamon-menus
 cinnamon-control-center
-cogl
-clutter
 muffin
 caribou
 pexpect
