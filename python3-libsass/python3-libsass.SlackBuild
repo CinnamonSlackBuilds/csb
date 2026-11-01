@@ -41,7 +41,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c https://files.pythonhosted.org/packages/79/b4/ab091585eaa77299558e3289ca206846aefc123fb320b5656ab2542c20ad/libsass-0.23.0.tar.gz
+wget -c https://files.pythonhosted.org/packages/source/l/libsass/libsass-0.23.0.tar.gz
 
 if [ ! -z "${PRINT_PACKAGE_NAME}" ]; then
   echo "$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE"
