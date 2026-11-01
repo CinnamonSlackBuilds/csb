@@ -45,7 +45,7 @@ if [ ! -z "${PRINT_PACKAGE_NAME}" ]; then
   exit 0
 fi
 
-wget -c https://files.pythonhosted.org/packages/a3/ae/2ca4913e5c0f09781d75482874c3a95db9105462a92ddd303c7d285d3df2/tinycss2-1.5.1.tar.gz
+wget -c https://files.pythonhosted.org/packages/source/t/tinycss2/tinycss2-1.5.1.tar.gz
 
 TMP=${TMP:-/tmp/csb}
 PKG=$TMP/package-$PRGNAM
