@@ -45,6 +45,7 @@ SKIPREBUILD=1
 
 # Loop for all packages
 for dir in \
+  gtk4-layer-shell \
   xapp-symbolic-icons \
   python3-pyinotify \
   python3-libsass \
