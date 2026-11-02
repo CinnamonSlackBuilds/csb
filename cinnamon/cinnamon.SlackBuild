@@ -23,7 +23,8 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=cinnamon
-VERSION=${VERSION:-6.6.9}
+VERSION=${VERSION:-6.8.0}
+COMMITVER="7b9067a509799252bd6418e37fa7720c491ad9ee"
 BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
@@ -35,7 +36,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c https://github.com/linuxmint/Cinnamon/archive/$VERSION/$PRGNAM-$VERSION.tar.gz
+#wget -c https://github.com/linuxmint/Cinnamon/archive/$VERSION/$PRGNAM-$VERSION.tar.gz
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/csb}
@@ -64,9 +65,10 @@ set -e
 rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
-rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tar.gz
-cd $PRGNAM-$VERSION
+rm -rf $PRGNAM
+#tar xvf $CWD/$PRGNAM-$VERSION.tar.gz
+git clone https://github.com/linuxmint/cinnamon.git
+cd $PRGNAM
 chown -R root:root .
 find -L . \
  \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
