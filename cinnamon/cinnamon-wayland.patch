@@ -1,0 +1,13 @@
+--- cinnamon/files/usr/bin/cinnamon-session-cinnamon.orig	2026-11-03 08:27:47.037975478 +0700
++++ cinnamon/files/usr/bin/cinnamon-session-cinnamon	2026-11-03 08:28:07.623295956 +0700
+@@ -2,7 +2,8 @@
+ 
+ if [ "$1" = "--wayland" ]; then
+     shift
++    export XDG_SESSION_TYPE=wayland
+     exec cinnamon-session --session cinnamon-wayland "$@"
+ else
+     exec cinnamon-session --session cinnamon "$@"
+-fi
+\ No newline at end of file
++fi
