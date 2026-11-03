@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Cinnamon (Wayland)
+Comment=This session logs you into Cinnamon
+Exec=startcinnamon-wayland
+TryExec=/usr/bin/cinnamon
+Icon=
+Type=Application
+DesktopNames=Cinnamon

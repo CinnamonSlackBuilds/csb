@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Set environmental flags for Wayland
+export XDG_SESSION_TYPE=wayland
+export XDG_CURRENT_DESKTOP=Cinnamon
+export MOZ_ENABLE_WAYLAND=1
+export QT_QPA_PLATFORM="wayland;xcb"
+
+# Launch Cinnamon with its own D-Bus session block
+exec dbus-run-session cinnamon-session --session=cinnamon-wayland
