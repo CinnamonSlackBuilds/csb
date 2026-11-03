@@ -53,7 +53,6 @@ for dir in \
   tinycss2 \
   xdotool \
   gsound \
-  pytz \
   libtimezonemap \
   setproctitle \
   ptyprocess \
