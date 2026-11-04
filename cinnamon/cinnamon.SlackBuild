@@ -24,7 +24,6 @@
 
 PRGNAM=cinnamon
 VERSION=${VERSION:-6.8.0}
-COMMITVER="71b4cb38068545caed9b05a27cf1606727576eef"
 BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
@@ -36,8 +35,7 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-#wget -c https://github.com/linuxmint/Cinnamon/archive/$VERSION/$PRGNAM-$VERSION.tar.gz
-wget -c https://github.com/linuxmint/cinnamon/archive/$COMMITVER/$PRGNAM-$COMMITVER.zip
+wget -c https://github.com/linuxmint/Cinnamon/archive/$VERSION/$PRGNAM-$VERSION.tar.gz
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/csb}
@@ -66,16 +64,12 @@ set -e
 rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
-rm -rf $PRGNAM-$COMMITVER
-#tar xvf $CWD/$PRGNAM-$VERSION.tar.gz
-unzip $CWD/$PRGNAM-$COMMITVER.zip
-cd $PRGNAM-$COMMITVER
-chown -R root:root .
-find -L . \
- \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
-  -o -perm 511 \) -exec chmod 755 {} \; -o \
- \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
-  -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+rm -rf $PRGNAM-$VERSION
+tar xvf $CWD/$PRGNAM-$VERSION.tar.gz --no-same-owner
+cd $PRGNAM-$VERSION
+find . ! -type l    -a \( \
+  \(     -perm /111 -a ! -perm 755 -a -exec chmod -f 755 {} + \) -o \
+  \(   ! -perm /111 -a ! -perm 644 -a -exec chmod -f 644 {} + \) \)
 
 # Patch to use Slackware Logo, thanks to Skaendo
 patch -p1 < $CWD/logo.patch
