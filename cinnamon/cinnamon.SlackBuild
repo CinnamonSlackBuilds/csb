@@ -24,7 +24,7 @@
 
 PRGNAM=cinnamon
 VERSION=${VERSION:-6.8.0}
-COMMITVER="9373681c876b2df2cf72b43e891315dfe5bb322d"
+COMMITVER="3f8b74a4889aaa3819023e19c06462fa71d89de8"
 BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
@@ -37,6 +37,7 @@ if [ -z "$ARCH" ]; then
 fi
 
 #wget -c https://github.com/linuxmint/Cinnamon/archive/$VERSION/$PRGNAM-$VERSION.tar.gz
+wget -c https://github.com/linuxmint/cinnamon/archive/$COMMITVER/$PRGNAM-$COMMITVER.zip
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/csb}
@@ -65,10 +66,10 @@ set -e
 rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
-rm -rf $PRGNAM
+rm -rf $PRGNAM-$COMMITVER
 #tar xvf $CWD/$PRGNAM-$VERSION.tar.gz
-git clone https://github.com/linuxmint/cinnamon.git
-cd $PRGNAM
+unzip $CWD/$PRGNAM-$COMMITVER.zip
+cd $PRGNAM-$COMMITVER
 chown -R root:root .
 find -L . \
  \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
