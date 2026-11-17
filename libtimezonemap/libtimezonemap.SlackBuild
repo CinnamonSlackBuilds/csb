@@ -24,7 +24,7 @@
 
 PRGNAM=libtimezonemap
 VERSION=${VERSION:-0.4.6}
-BUILD=${BUILD:-2}
+BUILD=${BUILD:-3}
 TAG=${TAG:-_csb}
 
 if [ -z "$ARCH" ]; then
@@ -64,6 +64,9 @@ cd $PRGNAM-$VERSION
 find . ! -type l    -a \( \
   \(     -perm /111 -a ! -perm 755 -a -exec chmod -f 755 {} + \) -o \
   \(   ! -perm /111 -a ! -perm 644 -a -exec chmod -f 644 {} + \) \)
+
+# Fix GPF for X11/Wayland in get_loc_for_xy()
+patch -p1 < $CWD/cc-timezone-map.patch
 
 autoreconf -vfi
 CFLAGS="$SLKCFLAGS" \

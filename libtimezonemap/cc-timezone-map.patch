@@ -1,0 +1,10 @@
+--- a/src/cc-timezone-map.c
++++ b/src/cc-timezone-map.c
+@@ -938,6 +938,7 @@
+               /* Cut the list off here */
+               node->prev->next = NULL;
+               g_list_free(node);
++              break;
+             }
+ 
+           node = g_list_next(node);
