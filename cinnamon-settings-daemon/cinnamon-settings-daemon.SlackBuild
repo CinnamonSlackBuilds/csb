@@ -24,7 +24,7 @@
 
 PRGNAM=cinnamon-settings-daemon
 VERSION=${VERSION:-6.8.2}
-BUILD=${BUILD:-1}
+BUILD=${BUILD:-2}
 TAG=${TAG:-_csb}
 
 if [ -z "$ARCH" ]; then
@@ -76,9 +76,7 @@ cd build
     --localstatedir=/var \
     --mandir=/usr/man \
     --prefix=/usr \
-    --sysconfdir=/etc \
-    -Duse_polkit=disabled \
-    -Duse_logind=enabled
+    --sysconfdir=/etc
   ninja
   DESTDIR=$PKG ninja install
 cd ..
