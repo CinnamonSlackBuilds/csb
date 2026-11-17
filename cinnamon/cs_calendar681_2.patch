@@ -1,0 +1,403 @@
+--- a/files/usr/share/cinnamon/cinnamon-settings/modules/cs_calendar.py
++++ b/files/usr/share/cinnamon/cinnamon-settings/modules/cs_calendar.py
+@@ -13,7 +13,7 @@
+     pass
+ import os
+ gi.require_version('TimezoneMap', '1.0')
+-from gi.repository import TimezoneMap
++from gi.repository import TimezoneMap, GLib, Gio, Gtk, GObject
+ 
+ class Module:
+     name = "calendar"
+@@ -27,11 +27,18 @@
+     def on_module_selected(self):
+         if not self.loaded:
+             print("Loading Calendar module")
++            self.updating_tz = False
++            self.updating_ntp = False
++            self.updating_datetime = False
++            self._tz_req_id = 0
++            self._ntp_req_id = 0
++            self._dt_req_id = 0
+ 
+             page = SettingsPage()
+             self.sidePage.add_widget(page)
+ 
+-            settings = page.add_section(_("Date and Time"))
++            self.dt_section = page.add_section(_("Date and Time"))
++            settings = self.dt_section
+             widget = SettingsWidget()
+             self.tz_map = TimezoneMap.TimezoneMap.new()
+             self.tz_map.set_size_request(-1, 205)
+@@ -62,12 +69,8 @@
+             days = [[7, _("Use locale default")], [0, _("Sunday")], [1, _("Monday")]]
+             settings.add_row(GSettingsComboBox(_("First day of week"), "org.cinnamon.desktop.interface", "first-day-of-week", days, valtype=int))
+ 
+-            if os.path.exists('/usr/sbin/ntpd'):
+-                print('using csd backend')
+-                self.proxy_handler = CsdDBusProxyHandler(self._on_proxy_ready)
+-            else:
+-                print('using systemd backend')
+-                self.proxy_handler = SytemdDBusProxyHandler(self._on_proxy_ready)
++            print('using timedated (systemd) backend')
++            self.proxy_handler = SystemdDBusProxyHandler(self._on_proxy_ready)
+ 
+             self.sync_24h_to_gnome()
+ 
+@@ -103,40 +106,149 @@
+         else:
+             self.gnome_settings.set_string("clock-format", "12h")
+ 
++    def _clear_updating_tz(self):
++        self.updating_tz = False
++        return False
++
++    def _restore_x11_focus(self):
++        if hasattr(self, "dt_section") and self.dt_section:
++            toplevel = self.dt_section.get_toplevel()
++            if isinstance(toplevel, Gtk.Window):
++                toplevel.present()
++            def _clear_backdrop(widget):
++                widget.unset_state_flags(Gtk.StateFlags.BACKDROP)
++                widget.queue_draw()
++                if isinstance(widget, Gtk.Container):
++                    widget.foreach(_clear_backdrop)
++            _clear_backdrop(self.dt_section)
++        return False
++
+     def on_map_location_changed(self, *args):
+-        zone = self.tz_map.get_location().props.zone
+-        if zone == self.zone:
+-            return
+-
+-        self.tz_selector.set_timezone(zone)
+-        self.set_timezone(zone)
++        if self.updating_tz:
++            return
++        loc = self.tz_map.get_location()
++        if not loc:
++            return
++        zone = loc.props.zone
++        if not zone or zone == self.zone:
++            return
++
++        self.updating_tz = True
++        try:
++            self.tz_selector.set_timezone(zone)
++            self.set_timezone(zone)
++        finally:
++            GLib.idle_add(self._clear_updating_tz)
+ 
+     def on_selector_location_changed(self, *args):
++        if self.updating_tz:
++            return
+         zone = self.tz_selector.get_timezone()
+-        if zone == self.zone:
+-            return
+-
+-        self.set_timezone(zone)
+-        self.tz_map.set_timezone(zone)
++        if not zone or zone == self.zone:
++            return
++
++        self.updating_tz = True
++        try:
++            self.set_timezone(zone)
++            self.tz_map.set_timezone(zone)
++        finally:
++            GLib.idle_add(self._clear_updating_tz)
++
++    def _revert_timezone_ui(self, req_id):
++        if req_id != self._tz_req_id:
++            return
++        if self.zone:
++            self.updating_tz = True
++            try:
++                self.tz_selector.set_timezone(self.zone)
++                self.tz_map.set_timezone(self.zone)
++            finally:
++                GLib.idle_add(self._clear_updating_tz)
++        GLib.timeout_add(50, self._restore_x11_focus)
++
++    def _revert_ntp_ui(self, req_id, previous_state):
++        if req_id != self._ntp_req_id:
++            return
++        self.updating_ntp = True
++        try:
++            self.ntp_switch.content_widget.set_active(previous_state)
++            self.revealer.set_reveal_child(not previous_state)
++        finally:
++            self.updating_ntp = False
++        GLib.timeout_add(50, self._restore_x11_focus)
++
++    def _revert_datetime_ui(self, req_id):
++        if req_id != self._dt_req_id:
++            return
++        tz = ZoneInfo(self.zone) if self.zone else None
++        now = datetime.datetime.now(tz)
++        self.updating_datetime = True
++        try:
++            self.date_chooser.set_date(now.date())
++            self.time_chooser.set_time(now.time())
++        finally:
++            self.updating_datetime = False
++        GLib.timeout_add(50, self._restore_x11_focus)
+ 
+     def set_timezone(self, zone):
+-        self.zone = zone
+-        self.proxy_handler.set_timezone(zone)
++        zoneinfo_dir = '/usr/share/zoneinfo/'
++        real_path = os.path.realpath(os.path.join(zoneinfo_dir, zone))
++        if real_path.startswith(zoneinfo_dir):
++            zone = real_path[len(zoneinfo_dir):]
++
++        self._tz_req_id += 1
++        req_id = self._tz_req_id
++
++        def _on_success():
++            if req_id == self._tz_req_id:
++                self.zone = zone
++            GLib.timeout_add(50, self._restore_x11_focus)
++
++        def _on_error():
++            self._revert_timezone_ui(req_id)
++
++        self.proxy_handler.set_timezone(zone, on_success=_on_success, on_error=_on_error)
+ 
+     def on_ntp_changed(self, *args):
++        if self.updating_ntp:
++            return
+         active = self.ntp_switch.content_widget.get_active()
+-        self.revealer.set_reveal_child(not active)
+-        self.proxy_handler.set_ntp(active)
++        previous_state = not active
++
++        self._ntp_req_id += 1
++        req_id = self._ntp_req_id
++
++        def _on_success():
++            if req_id == self._ntp_req_id:
++                self.revealer.set_reveal_child(not active)
++            GLib.timeout_add(50, self._restore_x11_focus)
++
++        def _on_error():
++            self._revert_ntp_ui(req_id, previous_state)
++
++        self.proxy_handler.set_ntp(active, on_success=_on_success, on_error=_on_error)
+ 
+     def set_date_and_time(self, *args):
++        if self.updating_datetime or self.ntp_switch.content_widget.get_active():
++            return
+         unaware = datetime.datetime.combine(self.date_chooser.get_date(), self.time_chooser.get_time())
+-        tz = ZoneInfo(self.zone)
++        tz = ZoneInfo(self.zone) if self.zone else None
+         self.datetime = unaware.replace(tzinfo=tz)
+ 
+         seconds = int((self.datetime - datetime.datetime(1970, 1, 1, tzinfo=datetime.timezone.utc)).total_seconds())
+-        self.proxy_handler.set_time(seconds)
+-
+-class SytemdDBusProxyHandler(object):
++
++        self._dt_req_id += 1
++        req_id = self._dt_req_id
++
++        def _on_success():
++            GLib.timeout_add(50, self._restore_x11_focus)
++
++        def _on_error():
++            self._revert_datetime_ui(req_id)
++
++        self.proxy_handler.set_time(seconds, zone=self.zone, on_success=_on_success, on_error=_on_error)
++
++class SystemdDBusProxyHandler(object):
+     def __init__(self, proxy_ready_callback):
+         self.proxy_ready_callback = proxy_ready_callback
+         try:
+@@ -145,7 +257,7 @@
+                                       '/org/freedesktop/timedate1',
+                                       'org.freedesktop.timedate1',
+                                       None, self._on_proxy_ready, None)
+-        except dbus.exceptions.DBusException as e:
++        except Exception as e:
+             print(e)
+             self._proxy = None
+ 
+@@ -156,65 +268,74 @@
+     def get_timezone(self):
+         if not self._proxy:
+             return None
+-        return str(self._proxy.get_cached_property('Timezone')).lstrip('\'').rstrip('\'')
++        tz = self._proxy.get_cached_property('Timezone')
++        if not tz:
++            return None
++        return tz.unpack()
+ 
+     def get_ntp(self):
+         if not self._proxy:
+             return False, False
+         can_use_ntp = self._proxy.get_cached_property('CanNTP')
+         using_ntp = self._proxy.get_cached_property('NTP')
+-        return can_use_ntp, using_ntp
+-
+-    def set_timezone(self, zone):
+-        if self._proxy:
+-            self._proxy.SetTimezone('(sb)', zone, True)
+-
+-    def set_ntp(self, active):
+-        if self._proxy:
+-            # not passing a callback to the dbus function will cause it to run synchronously and freeze the ui
+-            def async_empty_callback(*args, **kwargs):
+-                pass
+-            self._proxy.SetNTP('(bb)', active, True, result_handler=async_empty_callback)
+-
+-    def set_time(self, seconds):
+-        if self._proxy:
+-            self._proxy.SetTime('(xbb)', seconds * 1000000, False, True)
+-
+-
+-class CsdDBusProxyHandler(object):
+-    def __init__(self, proxy_ready_callback):
+-        self.proxy_ready_callback = proxy_ready_callback
+-        try:
+-            Gio.DBusProxy.new_for_bus(Gio.BusType.SYSTEM, Gio.DBusProxyFlags.NONE, None,
+-                                      'org.cinnamon.SettingsDaemon.DateTimeMechanism',
+-                                      '/org/cinnamon/SettingsDaemon/DateTimeMechanism',
+-                                      'org.cinnamon.SettingsDaemon.DateTimeMechanism',
+-                                      None, self._on_proxy_ready, None)
+-        except dbus.exceptions.DBusException as e:
+-            print(e)
+-            self._proxy = None
+-
+-    def _on_proxy_ready(self, object, result, data=None):
+-        self._proxy = Gio.DBusProxy.new_for_bus_finish(result)
+-        self.proxy_ready_callback()
+-
+-    def get_timezone(self):
+-        return self._proxy.GetTimezone()
+-
+-    def get_ntp(self):
+-        return self._proxy.GetUsingNtp()
+-
+-    def set_timezone(self, zone):
+-        self._proxy.SetTimezone('(s)', zone)
+-
+-    def set_ntp(self, active):
+-        # not passing a callback to the dbus function will cause it to run synchronously and freeze the ui
+-        def async_empty_callback(*args, **kwargs):
+-            pass
+-        self._proxy.SetUsingNtp('(b)', active, result_handler=async_empty_callback)
+-
+-    def set_time(self, seconds):
+-        self._proxy.SetTime('(x)', seconds)
++        return (
++            can_use_ntp.unpack() if can_use_ntp else False,
++            using_ntp.unpack() if using_ntp else False
++        )
++
++    def _run_timedatectl(self, args, label, on_success=None, on_error=None):
++        if not self._proxy:
++            if on_error:
++                on_error()
++            return
++
++        flags = Gio.SubprocessFlags.STDOUT_PIPE | Gio.SubprocessFlags.STDERR_PIPE
++        stdin_payload = None
++        if label == "SetTime":
++            flags |= Gio.SubprocessFlags.STDIN_PIPE
++            stdin_payload = "yes\n"
++
++        try:
++            proc = Gio.Subprocess.new(
++                ["/usr/bin/pkexec", "/usr/bin/timedatectl"] + args,
++                flags
++            )
++        except GLib.Error as error:
++            print(f"{label} launch error:", error.message)
++            if on_error:
++                on_error()
++            return
++
++        def _on_finished(subprocess_obj, result, user_data=None):
++            try:
++                _, _, stderr = subprocess_obj.communicate_utf8_finish(result)
++                if subprocess_obj.get_successful():
++                    if on_success:
++                        on_success()
++                else:
++                    exit_code = subprocess_obj.get_exit_status()
++                    if exit_code not in (126, 127):
++                        err_msg = stderr.strip() if stderr else f"exit status {exit_code}"
++                        print(f"{label} error:", err_msg)
++                    if on_error:
++                        on_error()
++            except GLib.Error as error:
++                print(f"{label} async error:", error.message)
++                if on_error:
++                    on_error()
++
++        proc.communicate_utf8_async(stdin_payload, None, _on_finished, None)
++
++    def set_timezone(self, zone, on_success=None, on_error=None):
++        self._run_timedatectl(["set-timezone", zone], "SetTimezone", on_success, on_error)
++
++    def set_ntp(self, active, on_success=None, on_error=None):
++        self._run_timedatectl(["set-ntp", "1" if active else "0"], "SetNTP", on_success, on_error)
++
++    def set_time(self, seconds, zone=None, on_success=None, on_error=None):
++        tz = ZoneInfo(zone) if zone else None
++        dt_str = datetime.datetime.fromtimestamp(seconds, tz=tz).strftime("%Y-%m-%d %H:%M:%S")
++        self._run_timedatectl(["set-time", dt_str], "SetTime", on_success, on_error)
+ 
+ 
+ # Timezones not in pytz.common_timezones - skip to match previous behavior
+@@ -307,6 +428,7 @@
+ 
+     def __init__(self):
+         super(TimeZoneSelector, self).__init__()
++        self.updating = False
+ 
+         self.pack_start(Gtk.Label(_("Region")), False, False, 0)
+         self.region_combo = Gtk.ComboBox()
+@@ -383,18 +505,35 @@
+         if timezone == "Etc/UTC" or timezone == "Universal":
+             return
+ 
+-        self.timezone = timezone
+-        region, city = timezone.split('/', maxsplit=1)
+-        self.region_combo.set_active_id(region)
+-        self.city_combo.set_model(self.region_map[region])
+-        self.city_combo.set_active_id(city)
++        if '/' not in timezone:
++            return
++
++        self.updating = True
++        try:
++            self.timezone = timezone
++            region, city = timezone.split('/', maxsplit=1)
++            if region in self.region_map:
++                self.region_combo.set_active_id(region)
++                self.city_combo.set_model(self.region_map[region])
++                self.city_combo.set_active_id(city)
++        finally:
++            self.updating = False
+ 
+     def on_region_changed(self, *args):
++        if self.updating:
++            return
+         region = self.region_combo.get_active_id()
+-        self.city_combo.set_model(self.region_map[region])
++        if region in self.region_map:
++            self.city_combo.set_model(self.region_map[region])
+ 
+     def on_city_changed(self, *args):
+-        self.timezone = '/'.join([self.region_combo.get_active_id(), self.city_combo.get_active_id()])
++        if self.updating:
++            return
++        region = self.region_combo.get_active_id()
++        city = self.city_combo.get_active_id()
++        if not region or not city:
++            return
++        self.timezone = '/'.join([region, city])
+         self.emit('timezone-changed', self.timezone)
+ 
+     def get_timezone(self):
