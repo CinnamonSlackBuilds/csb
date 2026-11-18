@@ -44,7 +44,7 @@
  
              self.sync_24h_to_gnome()
  
-@@ -103,40 +106,149 @@
+@@ -103,41 +106,149 @@
          else:
              self.gnome_settings.set_string("clock-format", "12h")
  
@@ -66,12 +66,7 @@
 +        return False
 +
      def on_map_location_changed(self, *args):
--        zone = self.tz_map.get_location().props.zone
--        if zone == self.zone:
--            return
--
--        self.tz_selector.set_timezone(zone)
--        self.set_timezone(zone)
+-        self.set_timezone(self.tz_map.get_location().props.zone)
 +        if self.updating_tz:
 +            return
 +        loc = self.tz_map.get_location()
@@ -89,14 +84,10 @@
 +            GLib.idle_add(self._clear_updating_tz)
  
      def on_selector_location_changed(self, *args):
+-        self.set_timezone(self.tz_selector.get_timezone())
 +        if self.updating_tz:
 +            return
-         zone = self.tz_selector.get_timezone()
--        if zone == self.zone:
--            return
--
--        self.set_timezone(zone)
--        self.tz_map.set_timezone(zone)
++        zone = self.tz_selector.get_timezone()
 +        if not zone or zone == self.zone:
 +            return
 +
@@ -144,8 +135,13 @@
 +        GLib.timeout_add(50, self._restore_x11_focus)
  
      def set_timezone(self, zone):
--        self.zone = zone
--        self.proxy_handler.set_timezone(zone)
+-        if zone == self.zone:
+-            return
+-
+-        def on_done(proxy, result, data=None):
+-            if isinstance(result, Exception):
+-                print(result)
+-            else:
 +        zoneinfo_dir = '/usr/share/zoneinfo/'
 +        real_path = os.path.realpath(os.path.join(zoneinfo_dir, zone))
 +        if real_path.startswith(zoneinfo_dir):
@@ -156,7 +152,12 @@
 +
 +        def _on_success():
 +            if req_id == self._tz_req_id:
-+                self.zone = zone
+                 self.zone = zone
+-
+-            self.tz_map.set_timezone(self.zone)
+-            self.tz_selector.set_timezone(self.zone)
+-
+-        self.proxy_handler.set_timezone(zone, on_done)
 +            GLib.timeout_add(50, self._restore_x11_focus)
 +
 +        def _on_error():
@@ -213,7 +214,7 @@
      def __init__(self, proxy_ready_callback):
          self.proxy_ready_callback = proxy_ready_callback
          try:
-@@ -145,7 +257,7 @@
+@@ -146,7 +257,7 @@
                                        '/org/freedesktop/timedate1',
                                        'org.freedesktop.timedate1',
                                        None, self._on_proxy_ready, None)
@@ -222,7 +223,7 @@
              print(e)
              self._proxy = None
  
-@@ -156,65 +268,74 @@
+@@ -157,66 +268,74 @@
      def get_timezone(self):
          if not self._proxy:
              return None
@@ -239,9 +240,10 @@
          using_ntp = self._proxy.get_cached_property('NTP')
 -        return can_use_ntp, using_ntp
 -
--    def set_timezone(self, zone):
+-    def set_timezone(self, zone, callback):
 -        if self._proxy:
--            self._proxy.SetTimezone('(sb)', zone, True)
+-            # no timeout, the call waits on the authentication dialog
+-            self._proxy.SetTimezone('(sb)', zone, True, result_handler=callback, timeout=GLib.MAXINT)
 -
 -    def set_ntp(self, active):
 -        if self._proxy:
@@ -278,8 +280,8 @@
 -    def get_ntp(self):
 -        return self._proxy.GetUsingNtp()
 -
--    def set_timezone(self, zone):
--        self._proxy.SetTimezone('(s)', zone)
+-    def set_timezone(self, zone, callback):
+-        self._proxy.SetTimezone('(s)', zone, result_handler=callback, timeout=GLib.MAXINT)
 -
 -    def set_ntp(self, active):
 -        # not passing a callback to the dbus function will cause it to run synchronously and freeze the ui
@@ -350,7 +352,7 @@
  
  
  # Timezones not in pytz.common_timezones - skip to match previous behavior
-@@ -307,6 +428,7 @@
+@@ -309,6 +428,7 @@
  
      def __init__(self):
          super(TimeZoneSelector, self).__init__()
@@ -358,7 +360,7 @@
  
          self.pack_start(Gtk.Label(_("Region")), False, False, 0)
          self.region_combo = Gtk.ComboBox()
-@@ -383,18 +505,35 @@
+@@ -385,18 +505,35 @@
          if timezone == "Etc/UTC" or timezone == "Universal":
              return
  

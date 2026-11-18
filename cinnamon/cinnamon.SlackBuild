@@ -23,8 +23,8 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=cinnamon
-VERSION=${VERSION:-6.8.1}
-BUILD=${BUILD:-2}
+VERSION=${VERSION:-6.8.2}
+BUILD=${BUILD:-1}
 TAG=${TAG:-_csb}
 
 if [ -z "$ARCH" ]; then
@@ -67,7 +67,7 @@ find . ! -type l    -a \( \
 
 # Patch Date & Time Settings to use Slackware's timedated as a shim.
 # Remove broken class CsdDBusProxyHandler for csd-datetime fallback
-patch -p1 < $CWD/cs_calendar681_2.patch
+patch -p1 < $CWD/cs_calendar682.patch
 
 # Patch to use Slackware Logo, thanks to Skaendo
 patch -p1 < $CWD/logo.patch
