@@ -33,7 +33,8 @@ How to build and install the CINNAMON packages using these scripts:
     Some known issues are documented in KNOWN_ISSUES.
 
 5.  Once the packages are built and installed, you can use 'xwmconfig' 
-    to select the cinnamon session. Run startx to start Cinnamon Desktop.
+    to select the cinnamon session.
+    Run startx to start Cinnamon Desktop via Xorg or startcinnamon-wayland via Wayland
     If you are running on runlevel 4, you can add this in /etc/rc.d/rc.4:
     if [ -x /usr/bin/lightdm ]; then
       exec /usr/bin/lightdm
