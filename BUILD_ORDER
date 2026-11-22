@@ -19,6 +19,7 @@ cinnamon-session
 cinnamon-settings-daemon
 gnome-menus
 cinnamon-menus
+cinnamon-sounds
 cinnamon-control-center
 muffin
 pexpect

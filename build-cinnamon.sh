@@ -66,6 +66,7 @@ for dir in \
   cinnamon-settings-daemon \
   gnome-menus \
   cinnamon-menus \
+  cinnamon-sounds \
   cinnamon-control-center \
   muffin \
   pexpect \
